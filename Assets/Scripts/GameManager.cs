@@ -7,6 +7,24 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    #region NEW CODE
+    //A3
+    public bool A3PortalActive { get; set; } = false;
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            A3PortalActive = true;
+        }
+    }
+
+
+    #endregion
+
+
+
+
     [Header("Area 1 Utilities")]
     public bool BlueOrbItem { get; set; } = false;
 
