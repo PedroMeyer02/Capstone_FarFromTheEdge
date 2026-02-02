@@ -8,6 +8,30 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
     #region NEW CODE
+
+    // Pause Player State
+    public bool IsPlayedPaused { get; set; } = false;
+
+    //START
+    private void Start()
+    {
+        StartCoroutine(GameStart());
+    }
+
+    IEnumerator GameStart()
+    {
+        IsPlayedPaused = true;
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(GameResume());
+    }
+    IEnumerator GameResume()
+    {
+        IsPlayedPaused = false;
+        StopAllCoroutines();
+        return null;
+    }
+
+
     //A3
     public bool A3PortalActive { get; set; } = false;
 
@@ -18,8 +42,6 @@ public class GameManager : Singleton<GameManager>
             A3PortalActive = true;
         }
     }
-
-
     #endregion
 
 
@@ -98,8 +120,7 @@ public class GameManager : Singleton<GameManager>
     //TextSpeed for menu settings
     public float textSpeed = 0.01f;
 
-    // Pause Player State
-    public bool IsPlayedPaused { get; set; } = false;
+
 
     
 
