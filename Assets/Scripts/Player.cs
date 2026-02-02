@@ -57,13 +57,16 @@ public class Player : MonoBehaviour
             animator.SetFloat("MoveSpeed", 0f);
             return;
         }
+        else 
+        {
+            // Update animation parameter every frame
+            float speed = moveDirection.magnitude;
+            animator.SetFloat("MoveSpeed", speed);
 
-        // Update animation parameter every frame
-        float speed = moveDirection.magnitude;
-        animator.SetFloat("MoveSpeed", speed);
+            // Flip the sprite
+            GetFacingDirection(-moveDirection.x);
+        }
 
-        // Flip the sprite
-        GetFacingDirection(-moveDirection.x);
     }
 
     // Update is called once per frame
