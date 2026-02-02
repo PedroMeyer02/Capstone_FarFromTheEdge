@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class GameManager : Singleton<GameManager>
 {
     #region NEW CODE
+
+    CinemachineCamera virtualCamera;
+    Player player;
 
     // Pause Player State
     public bool IsPlayedPaused { get; set; } = false;
@@ -16,6 +21,8 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         StartCoroutine(GameStart());
+        player = FindAnyObjectByType<Player>();
+        virtualCamera = FindAnyObjectByType<CinemachineCamera>();
     }
 
     IEnumerator GameStart()
@@ -29,6 +36,17 @@ public class GameManager : Singleton<GameManager>
         IsPlayedPaused = false;
         StopAllCoroutines();
         return null;
+    }
+
+
+    public void CameraToCharacter()
+    {
+        //virtualCamera.transform.LookAt(player.transform.position);
+    }
+
+    public void CameraToObject(Transform newTarget)
+    {
+        //virtualCamera.transform.LookAt(newTarget.transform.position);
     }
 
     //A1

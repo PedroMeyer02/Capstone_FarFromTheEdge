@@ -11,6 +11,7 @@ public class FirstOrb : MonoBehaviour
     [SerializeField] VisualEffect mistDissipate;
     [SerializeField] Animator orbAnimator;
     GameObject player;
+    public GameObject cameraShift;
 
     private void Start()
     {
@@ -34,18 +35,26 @@ public class FirstOrb : MonoBehaviour
     IEnumerator OrbAcquistion()
     {
         GameManager.Instance.IsPlayedPaused = true;
-        player.GetComponent<Animator>().SetTrigger("OrbAcquisition");
+        GameManager.Instance.A1OrbAcquired = true;
+        GameManager.Instance.CameraToObject(cameraShift.transform);
         orbAnimator.SetTrigger("Activate");
+
+        yield return new WaitForSeconds(1f);
+
+        player.GetComponent<Animator>().SetTrigger("OrbAcquisition");
         orbEffect.Play();
-        yield return new WaitForSeconds(4f);
+
+        yield return new WaitForSeconds(3f);
+
         orbEffect.Stop();
         mistEffect.Stop();
         mistDissipate.Play();
+
         yield return new WaitForSeconds(1f);
+
+        GameManager.Instance.CameraToCharacter();
         GameManager.Instance.IsPlayedPaused = false;
         col.gameObject.SetActive(false);
-        GameManager.Instance.A1OrbAcquired = true;
-
         player = this.gameObject;
         StopAllCoroutines();
     }
