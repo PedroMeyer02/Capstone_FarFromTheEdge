@@ -31,6 +31,9 @@ public class GameManager : Singleton<GameManager>
         return null;
     }
 
+    //A1
+    public bool A1OrbAcquired { get; set; } = false;
+
 
     //A3
     public bool A3PortalActive { get; set; } = false;

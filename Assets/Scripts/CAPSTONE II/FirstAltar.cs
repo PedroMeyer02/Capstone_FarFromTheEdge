@@ -5,13 +5,21 @@ using UnityEngine;
 public class FirstAltar : MonoBehaviour
 {
     Collider col;
-    [SerializeField] GameObject orb;
     [SerializeField] GameObject standingPosition;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         col = GetComponent<Collider>();
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.A1OrbAcquired)
+        {
+            col.enabled = false;
+            standingPosition.SetActive(false);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -24,10 +32,4 @@ public class FirstAltar : MonoBehaviour
         standingPosition.SetActive(false);
     }
 
-
-    IEnumerator OrbAcquisitionSequence()
-    {
-        orb.SetActive(false);
-        return null;
-    }
 }

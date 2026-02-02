@@ -15,21 +15,26 @@ public class FirstOrb : MonoBehaviour
     private void Start()
     {
         col = GetComponent<Collider>();
-        player = this.gameObject;
+
+        if (player == null)
+        {
+            player = this.gameObject;
+        }
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(OrbAcquistion());
         player = other.gameObject;
+
+        StartCoroutine(OrbAcquistion());
     }
 
 
     IEnumerator OrbAcquistion()
     {
-        player.GetComponent<Animator>().SetTrigger("Teleport");
         GameManager.Instance.IsPlayedPaused = true;
+        player.GetComponent<Animator>().SetTrigger("OrbAcquisition");
         orbAnimator.SetTrigger("Activate");
         orbEffect.Play();
         yield return new WaitForSeconds(4f);
@@ -38,6 +43,8 @@ public class FirstOrb : MonoBehaviour
         mistDissipate.Play();
         yield return new WaitForSeconds(1f);
         GameManager.Instance.IsPlayedPaused = false;
+        col.gameObject.SetActive(false);
+        GameManager.Instance.A1OrbAcquired = true;
 
         player = this.gameObject;
         StopAllCoroutines();
