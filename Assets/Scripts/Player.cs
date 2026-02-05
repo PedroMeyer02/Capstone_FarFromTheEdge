@@ -29,9 +29,6 @@ public class Player : MonoBehaviour
     // Animation Utils
     private static readonly int collectParam = Animator.StringToHash("PlayerCollect");
 
-    //[Header("Equipment Utils")]
-    //public GameObject pickaxe;
-    //public GameObject fireOrb;
 
     private float safetyTimer;
     private readonly Queue<PositionRecord> positionHistory = new Queue<PositionRecord>();
@@ -66,7 +63,6 @@ public class Player : MonoBehaviour
             // Flip the sprite
             GetFacingDirection(-moveDirection.x);
         }
-
     }
 
     // Update is called once per frame
@@ -87,27 +83,6 @@ public class Player : MonoBehaviour
         // Flip the player sprite based on movement direction
         GetFacingDirection(-moveDirection.x);
     }
-
-    //private void UpdateEquipedItem()
-    //{
-    //    if (GameManager.Instance.HasPickaxeEquipped)
-    //    {
-    //        pickaxe.SetActive(true);
-    //    }
-    //    else
-    //    {
-    //        pickaxe.SetActive(false);
-    //    }
-
-    //    if (GameManager.Instance.HasFireOrbEquipped)
-    //    {
-    //        fireOrb.SetActive(true);
-    //    }
-    //    else
-    //    {
-    //        fireOrb.SetActive(false);
-    //    }
-    //}
 
     #region Movement Methods
 
@@ -348,6 +323,75 @@ public class Player : MonoBehaviour
         }
     }
 
+    #endregion
+
+    //NewCode
+    #region Skills
+    //SKILLS USAGE
+    public void Skill1(InputAction.CallbackContext context)
+    {
+        if (context.action.inProgress && !isInteracting && GameManager.Instance.A1Skill1Acquired)
+        {
+            isInteracting = true;
+            GameManager.Instance.IsPlayedPaused = true;
+
+            StartCoroutine(UseSkill1());
+            Debug.Log("Skill1 used");
+        }
+        else return;
+    }
+    public void Skill2(InputAction.CallbackContext context)
+    {
+        if (context.action.inProgress && !isInteracting && GameManager.Instance.A2Skill2Acquired)
+        {
+            isInteracting = true;
+            GameManager.Instance.IsPlayedPaused = true;
+
+            StartCoroutine(UseSkill2());
+            Debug.Log("Skill2 used");
+        }
+        else return;
+    }
+    public void Skill3(InputAction.CallbackContext context)
+    {
+        if (context.action.inProgress && !isInteracting && GameManager.Instance.A4Skill3Acquired)
+        {
+            isInteracting = true;
+            GameManager.Instance.IsPlayedPaused = true;
+
+            StartCoroutine(UseSkill3());
+            Debug.Log("Skill3 used");
+        }
+        else return;
+    }
+
+    IEnumerator UseSkill1()
+    {
+        animator.SetTrigger("Skill1");
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.IsPlayedPaused = false;
+        isInteracting = false;
+        StopAllCoroutines();
+    }
+
+    IEnumerator UseSkill2()
+    {
+        animator.SetTrigger("Skill2");
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.IsPlayedPaused = false;
+        isInteracting = false;
+        StopAllCoroutines();
+    }
+
+    IEnumerator UseSkill3()
+    {
+        animator.SetTrigger("Skill3");
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.IsPlayedPaused = false;
+        isInteracting = false;
+        StopAllCoroutines();
+    }
+    
     #endregion
 }
 

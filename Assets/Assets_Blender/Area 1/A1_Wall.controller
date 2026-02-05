@@ -139,7 +139,7 @@ AnimatorController:
   m_Name: A1_Wall
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: OpenWall
+  - m_Name: Activate
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -167,7 +167,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: OpenWall
+    m_ConditionEvent: Activate
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1167872788295978635}
