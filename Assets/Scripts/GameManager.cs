@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
 {
     #region NEW CODE
 
-    CinemachineCamera virtualCamera;
+    GameObject cameraPlaceholder;
     Player player;
 
     // Pause Player State
@@ -22,7 +22,6 @@ public class GameManager : Singleton<GameManager>
     {
         StartCoroutine(GameStart());
         player = FindAnyObjectByType<Player>();
-        virtualCamera = FindAnyObjectByType<CinemachineCamera>();
     }
 
     IEnumerator GameStart()
@@ -34,30 +33,40 @@ public class GameManager : Singleton<GameManager>
     IEnumerator GameResume()
     {
         IsPlayedPaused = false;
+        yield return new WaitForSeconds(.1f);
         StopAllCoroutines();
-        return null;
     }
 
 
     public void CameraToCharacter()
     {
-        //virtualCamera.transform.LookAt(player.transform.position);
+        cameraPlaceholder.SetActive(false);
+        cameraPlaceholder = null;  
     }
 
-    public void CameraToObject(Transform newTarget)
+    public void CameraToObject(GameObject newTarget)
     {
-        //virtualCamera.transform.LookAt(newTarget.transform.position);
+        cameraPlaceholder = newTarget;
+        newTarget.SetActive(true);
     }
 
     //A1
-    public bool A1OrbAcquired { get; set; } = false;
-
+    public bool A1Skill1Acquired { get; set; } = false;
+    
+    //A2
+    public bool A2Skill2Acquired { get; set; } = false;
 
     //A3
     public bool A3PortalActive { get; set; } = false;
 
+    //A4
+    public bool A4Skill3Acquired { get; set; } = false;
+
     private void Update()
     {
+        
+
+        //A3 REMOVE
         if(Input.GetKeyDown(KeyCode.T))
         {
             A3PortalActive = true;

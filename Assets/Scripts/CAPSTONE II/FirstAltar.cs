@@ -15,7 +15,7 @@ public class FirstAltar : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.A1OrbAcquired)
+        if (GameManager.Instance.A1Skill1Acquired)
         {
             col.enabled = false;
             standingPosition.SetActive(false);

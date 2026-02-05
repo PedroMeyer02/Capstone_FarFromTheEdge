@@ -10,8 +10,8 @@ public class FirstOrb : MonoBehaviour
     [SerializeField] VisualEffect mistEffect;
     [SerializeField] VisualEffect mistDissipate;
     [SerializeField] Animator orbAnimator;
+    public GameObject newCamera;
     GameObject player;
-    public GameObject cameraShift;
 
     private void Start()
     {
@@ -35,8 +35,8 @@ public class FirstOrb : MonoBehaviour
     IEnumerator OrbAcquistion()
     {
         GameManager.Instance.IsPlayedPaused = true;
-        GameManager.Instance.A1OrbAcquired = true;
-        GameManager.Instance.CameraToObject(cameraShift.transform);
+        GameManager.Instance.A1Skill1Acquired = true;
+        GameManager.Instance.CameraToObject(newCamera);
         orbAnimator.SetTrigger("Activate");
 
         yield return new WaitForSeconds(1f);
