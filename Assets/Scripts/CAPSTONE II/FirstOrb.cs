@@ -56,6 +56,9 @@ public class FirstOrb : MonoBehaviour
         GameManager.Instance.IsPlayedPaused = false;
         col.gameObject.SetActive(false);
         player = this.gameObject;
+
+        GameManager.Instance.UIManager.skill1Acquired.SetActive(true);
+
         StopAllCoroutines();
     }
 }

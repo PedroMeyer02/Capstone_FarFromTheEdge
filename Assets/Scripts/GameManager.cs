@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
 
     GameObject cameraPlaceholder;
     Player player;
+    public UIManager UIManager;
 
     // Pause Player State
     public bool IsPlayedPaused { get; set; } = false;
@@ -22,6 +23,7 @@ public class GameManager : Singleton<GameManager>
     {
         StartCoroutine(GameStart());
         player = FindAnyObjectByType<Player>();
+        UIManager = FindAnyObjectByType<UIManager>();
     }
 
     IEnumerator GameStart()
