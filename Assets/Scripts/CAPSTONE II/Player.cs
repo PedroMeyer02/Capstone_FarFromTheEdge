@@ -15,11 +15,15 @@ public class Player : MonoBehaviour
 
     [Header("Player Stats")]
     // Don't adjust here, use the Player Component in the Inspector
-    public int moveSpeed = 10;
+    //public int moveSpeed = 10;
 
     [Header("Item Utils")]
     private IPlayerInteractable nearbyInteractable;
-    private bool isInteracting = false;
+    public bool isInteracting = false;
+
+    public PlayerInput input;
+
+    public PlayerMovement playerMovement;
 
     [Header("Safety Net")]
     public float fallThreshold = -10f;
@@ -50,85 +54,89 @@ public class Player : MonoBehaviour
         CheckFallSafetyNet();
 
         if (GameManager.Instance.IsPlayerPaused)
-        {            
-
-            animator.SetFloat("MoveSpeed", 0f);
-            return;
-        }
-        else 
         {
+            playerMovement.enabled = false;
+            isInteracting = true;
+            input.enabled = false;
+            //animator.SetFloat("MoveSpeed", 0f);
+            //return;
+        }
+        else if (!GameManager.Instance.IsPlayerPaused)
+        {
+            playerMovement.enabled = true;
+            isInteracting = false;
+            input.enabled = true;
+            //// Update animation parameter every frame
+            //float speed = moveDirection.magnitude;
+            //animator.SetFloat("MoveSpeed", speed);
 
-            // Update animation parameter every frame
-            float speed = moveDirection.magnitude;
-            animator.SetFloat("MoveSpeed", speed);
-
-            // Flip the sprite
-            GetFacingDirection(-moveDirection.x);
+            //// Flip the sprite
+            //GetFacingDirection(-moveDirection.x);
         }
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        // Stop movement when paused
-        if (GameManager.Instance.IsPlayerPaused)
-        {            
+    //void FixedUpdate()
+    //{
+    //    // Stop movement when paused
+    //    if (GameManager.Instance.IsPlayerPaused)
+    //    {            
 
-            rb.linearVelocity = Vector3.zero;
-            moveDirection = Vector2.zero;
-            return;
+    //        rb.linearVelocity = Vector3.zero;
+    //        moveDirection = Vector2.zero;
+    //        return;
 
-        }
-        else
-        {
+    //    }
+    //    else
+    //    {
 
-            // This is an Movement implementation for Unity's Input System
-            Vector2 velocity = moveDirection * moveSpeed;
-            rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.y);
+    //        // This is an Movement implementation for Unity's Input System
+    //        Vector2 velocity = moveDirection * moveSpeed;
+    //        rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.y);
 
-            // Flip the player sprite based on movement direction
-            GetFacingDirection(-moveDirection.x);
-        }
+    //        // Flip the player sprite based on movement direction
+    //        GetFacingDirection(-moveDirection.x);
+    //    }
 
-    }
+    //}
 
-    #region Movement Methods
+    //#region Movement Methods
 
-    /// <summary>
-    /// Method that flips the player sprite based on direction
-    /// </summary>
-    /// <param name="moveDirection"></param>
-    /// <returns></returns>
-    private float GetFacingDirection(float moveDirection)
-    {
-        if (moveDirection > 0)
-        {
-            spriteRenderer.flipX = false;
-            return 1f;
-        }
-        else if (moveDirection < 0)
-        {
-            spriteRenderer.flipX = true;
-            return -1f;
-        }
+    ///// <summary>
+    ///// Method that flips the player sprite based on direction
+    ///// </summary>
+    ///// <param name="moveDirection"></param>
+    ///// <returns></returns>
+    //private float GetFacingDirection(float moveDirection)
+    //{
+    //    if (moveDirection > 0)
+    //    {
+    //        spriteRenderer.flipX = false;
+    //        return 1f;
+    //    }
+    //    else if (moveDirection < 0)
+    //    {
+    //        spriteRenderer.flipX = true;
+    //        return -1f;
+    //    }
 
-        return 0f;
-    }
+    //    return 0f;
+    //}
 
-    /// <summary>
-    /// Called in Player's "Player Input" Component to move
-    /// </summary>
-    /// <param name="context"></param>
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        if (context.action.inProgress && !isInteracting && !GameManager.Instance.IsPlayerPaused)
-        {
-            moveDirection = context.ReadValue<Vector2>();
-        }
-        else moveDirection = Vector3.zero;
-    }
+    ///// <summary>
+    ///// Called in Player's "Player Input" Component to move
+    ///// </summary>
+    ///// <param name="context"></param>
+    //public void OnMove(InputAction.CallbackContext context)
+    //{
+    //    if (context.action.inProgress && !isInteracting && !GameManager.Instance.IsPlayerPaused)
+    //    {
+    //        moveDirection = context.ReadValue<Vector2>();
+    //    }
+    //    else moveDirection = Vector3.zero;
+    //}
 
-    #endregion
+    //#endregion
 
     #region Safety Net Methods
 

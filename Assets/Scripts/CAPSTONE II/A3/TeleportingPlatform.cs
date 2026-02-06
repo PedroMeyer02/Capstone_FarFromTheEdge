@@ -6,30 +6,47 @@ public class TeleportingPlatform : MonoBehaviour
 {
     Collider col;
     public Transform newPosition;
-    GameObject player;
+
+    Player player;
+
+    //GameObject player;
+
+    bool portalActive = false;
+
     VisualEffect teleportEffect;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player = FindAnyObjectByType<Player>();
+
         col = GetComponent<Collider>();
         teleportEffect = GetComponentInChildren<VisualEffect>();
 
         teleportEffect.Stop();
 
-        if(player == null )
+        //if(player == null )
+        //{
+        //   player = this.gameObject;
+        //}
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.A3PortalActive && !portalActive)
         {
-           player = this.gameObject;
+            teleportEffect.Play();
+            portalActive = true;
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (GameManager.Instance.A3PortalActive)
         {
-            player = other.gameObject;
+            //player = other.gameObject;
             StartCoroutine(A3PortalAction());
-            teleportEffect.Play();
         }
         else
         {
@@ -43,11 +60,11 @@ public class TeleportingPlatform : MonoBehaviour
         player.GetComponent<Animator>().SetTrigger("Teleport");
         yield return new WaitForSeconds(1f);
         player.transform.position = newPosition.position;
-        player = this.gameObject;
+        //player = this.gameObject;
         yield return new WaitForSeconds(1f);
         GameManager.Instance.IsPlayerPaused = false;
 
-        teleportEffect.Stop();
+        //teleportEffect.Stop();
 
         StopAllCoroutines();
     }
