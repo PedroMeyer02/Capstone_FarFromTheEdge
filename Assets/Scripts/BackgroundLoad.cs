@@ -24,8 +24,8 @@ public class BackgroundLoad : MonoBehaviour
 
     private AsyncOperation loadingOperation;
     private bool isLoadingComplete = false;
-    private bool animationActive = false;
-    private int currentSpriteIndex = 0;
+    //private bool animationActive = false;
+    //private int currentSpriteIndex = 0;
 
     void Start()
     {
@@ -80,7 +80,7 @@ public class BackgroundLoad : MonoBehaviour
         // Check for any input when loading is complete
         if (isLoadingComplete && Keyboard.current.eKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
-            animationActive = false;
+            //animationActive = false;
             loadingOperation.allowSceneActivation = true;
         }
     }

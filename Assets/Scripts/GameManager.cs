@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,27 +15,28 @@ public class GameManager : Singleton<GameManager>
     GameObject cameraPlaceholder;
     Player player;
     public UIManager UIManager;
+    bool gameStarted = false;
 
     // Pause Player State
-    public bool IsPlayedPaused { get; set; } = false;
+    [SerializeField] public bool IsPlayerPaused = false;
+    //[SerializeField] public bool IsPlayerPaused { get; set; } = false;
 
     //START
     private void Start()
     {
-        StartCoroutine(GameStart());
         player = FindAnyObjectByType<Player>();
         UIManager = FindAnyObjectByType<UIManager>();
     }
 
     IEnumerator GameStart()
     {
-        IsPlayedPaused = true;
-        yield return new WaitForSeconds(1.5f);
+        IsPlayerPaused = true;
+        yield return new WaitForSeconds(3f);
         StartCoroutine(GameResume());
     }
     IEnumerator GameResume()
     {
-        IsPlayedPaused = false;
+        IsPlayerPaused = false;
         yield return new WaitForSeconds(.1f);
         StopAllCoroutines();
     }
@@ -66,13 +68,26 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
-        
-
         //A3 REMOVE
         if(Input.GetKeyDown(KeyCode.T))
         {
             A3PortalActive = true;
+            A1Skill1Acquired = true;
+            A2Skill2Acquired = true;
+            A4Skill3Acquired = true;
         }
+
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            IsPlayerPaused = false;
+        }
+
+        if (!gameStarted)
+        {
+            StartCoroutine(GameStart());
+            gameStarted = true;
+        }
+
     }
     #endregion
 

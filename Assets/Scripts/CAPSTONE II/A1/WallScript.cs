@@ -1,0 +1,60 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.VFX;
+
+public class WallScript : MonoBehaviour
+{
+    public GameObject newCamera;
+
+    Animator wallAnim;
+    VisualEffect wallEffect;
+
+    bool isWallOpen = false;
+    public Collider col;
+    Animator anim;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        wallAnim = GetComponent<Animator>();
+        col = GetComponent<Collider>();
+        anim = GetComponent<Animator>();
+        wallEffect = GetComponentInChildren<VisualEffect>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Skill1") && !isWallOpen)
+        {
+            StartCoroutine(WallOpen());
+            isWallOpen = true;
+            col.enabled = false;
+        }
+    }
+    
+    IEnumerator WallOpen()
+    {
+        GameManager.Instance.IsPlayerPaused = true;
+        GameManager.Instance.CameraToObject(newCamera);
+
+        yield return new WaitForSeconds(1f);
+
+        wallAnim.SetTrigger("Activate");
+        wallEffect.Play();
+
+        yield return new WaitForSeconds(3f);
+
+        wallEffect.Stop();
+
+        yield return new WaitForSeconds(1f);
+
+        GameManager.Instance.CameraToCharacter();
+        GameManager.Instance.IsPlayerPaused = false;
+        StopAllCoroutines();
+    }
+
+
+
+
+
+}
