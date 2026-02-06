@@ -640,45 +640,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Inventory",
-                    "type": "Button",
-                    "id": "3afa341d-911a-47b3-a247-eed86819546a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "SkipDialogue",
                     "type": "Button",
                     "id": "7375acd6-58ad-470f-9013-4aa8545c38aa",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "EquipPickaxe",
-                    "type": "Button",
-                    "id": "ad7c0a76-172d-4f64-9f01-3f68cc13a710",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "EquipItem2",
-                    "type": "Button",
-                    "id": "45c0555a-ada1-4210-bf7d-2085a2f5b446",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "EquipItem3",
-                    "type": "Button",
-                    "id": "d949a717-3767-425a-8576-34415962ac19",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -1117,17 +1081,6 @@
                 },
                 {
                     "name": "",
-                    "id": "cf747b4f-15d4-4b68-8ef0-fa115a3156ac",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b6afc10d-97b9-4deb-84aa-eda578aa12cf",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -1150,34 +1103,40 @@
                 },
                 {
                     "name": "",
-                    "id": "bcfb022e-2e5c-4469-86aa-94ede6b7e54e",
-                    "path": "<Keyboard>/1",
+                    "id": "ad783f7e-a595-4608-a2e1-b9627f94823e",
+                    "path": "<Keyboard>/anyKey",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "EquipPickaxe",
+                    "groups": "",
+                    "action": "SkipDialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "Paused",
+            "id": "8f0acf97-56ff-4044-a159-6319dbf24e05",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "c34bbc8a-9b9d-4be8-8158-fd969bca2c43",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "1580090d-7af6-4c0f-ac82-d5c90468e928",
-                    "path": "<Keyboard>/2",
+                    "id": "a1dc353a-3773-42c5-bb1b-52c8b4dfb2ea",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "EquipItem2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e1a94154-0986-4960-b6e1-e2d9cdcc69e7",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "EquipItem3",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

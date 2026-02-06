@@ -726,45 +726,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Inventory"",
-                    ""type"": ""Button"",
-                    ""id"": ""3afa341d-911a-47b3-a247-eed86819546a"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""SkipDialogue"",
                     ""type"": ""Button"",
                     ""id"": ""7375acd6-58ad-470f-9013-4aa8545c38aa"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""EquipPickaxe"",
-                    ""type"": ""Button"",
-                    ""id"": ""ad7c0a76-172d-4f64-9f01-3f68cc13a710"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""EquipItem2"",
-                    ""type"": ""Button"",
-                    ""id"": ""45c0555a-ada1-4210-bf7d-2085a2f5b446"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""EquipItem3"",
-                    ""type"": ""Button"",
-                    ""id"": ""d949a717-3767-425a-8576-34415962ac19"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -1203,17 +1167,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cf747b4f-15d4-4b68-8ef0-fa115a3156ac"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b6afc10d-97b9-4deb-84aa-eda578aa12cf"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -1236,34 +1189,40 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bcfb022e-2e5c-4469-86aa-94ede6b7e54e"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""id"": ""ad783f7e-a595-4608-a2e1-b9627f94823e"",
+                    ""path"": ""<Keyboard>/anyKey"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""EquipPickaxe"",
+                    ""groups"": """",
+                    ""action"": ""SkipDialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""Paused"",
+            ""id"": ""8f0acf97-56ff-4044-a159-6319dbf24e05"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""c34bbc8a-9b9d-4be8-8158-fd969bca2c43"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""1580090d-7af6-4c0f-ac82-d5c90468e928"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""id"": ""a1dc353a-3773-42c5-bb1b-52c8b4dfb2ea"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""EquipItem2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e1a94154-0986-4960-b6e1-e2d9cdcc69e7"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""EquipItem3"",
+                    ""groups"": """",
+                    ""action"": ""New action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1360,17 +1319,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
-        m_UI_Inventory = m_UI.FindAction("Inventory", throwIfNotFound: true);
         m_UI_SkipDialogue = m_UI.FindAction("SkipDialogue", throwIfNotFound: true);
-        m_UI_EquipPickaxe = m_UI.FindAction("EquipPickaxe", throwIfNotFound: true);
-        m_UI_EquipItem2 = m_UI.FindAction("EquipItem2", throwIfNotFound: true);
-        m_UI_EquipItem3 = m_UI.FindAction("EquipItem3", throwIfNotFound: true);
+        // Paused
+        m_Paused = asset.FindActionMap("Paused", throwIfNotFound: true);
+        m_Paused_Newaction = m_Paused.FindAction("New action", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Paused.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Paused.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1674,11 +1633,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_Pause;
-    private readonly InputAction m_UI_Inventory;
     private readonly InputAction m_UI_SkipDialogue;
-    private readonly InputAction m_UI_EquipPickaxe;
-    private readonly InputAction m_UI_EquipItem2;
-    private readonly InputAction m_UI_EquipItem3;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -1735,25 +1690,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
         /// <summary>
-        /// Provides access to the underlying input action "UI/Inventory".
-        /// </summary>
-        public InputAction @Inventory => m_Wrapper.m_UI_Inventory;
-        /// <summary>
         /// Provides access to the underlying input action "UI/SkipDialogue".
         /// </summary>
         public InputAction @SkipDialogue => m_Wrapper.m_UI_SkipDialogue;
-        /// <summary>
-        /// Provides access to the underlying input action "UI/EquipPickaxe".
-        /// </summary>
-        public InputAction @EquipPickaxe => m_Wrapper.m_UI_EquipPickaxe;
-        /// <summary>
-        /// Provides access to the underlying input action "UI/EquipItem2".
-        /// </summary>
-        public InputAction @EquipItem2 => m_Wrapper.m_UI_EquipItem2;
-        /// <summary>
-        /// Provides access to the underlying input action "UI/EquipItem3".
-        /// </summary>
-        public InputAction @EquipItem3 => m_Wrapper.m_UI_EquipItem3;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1813,21 +1752,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @Inventory.started += instance.OnInventory;
-            @Inventory.performed += instance.OnInventory;
-            @Inventory.canceled += instance.OnInventory;
             @SkipDialogue.started += instance.OnSkipDialogue;
             @SkipDialogue.performed += instance.OnSkipDialogue;
             @SkipDialogue.canceled += instance.OnSkipDialogue;
-            @EquipPickaxe.started += instance.OnEquipPickaxe;
-            @EquipPickaxe.performed += instance.OnEquipPickaxe;
-            @EquipPickaxe.canceled += instance.OnEquipPickaxe;
-            @EquipItem2.started += instance.OnEquipItem2;
-            @EquipItem2.performed += instance.OnEquipItem2;
-            @EquipItem2.canceled += instance.OnEquipItem2;
-            @EquipItem3.started += instance.OnEquipItem3;
-            @EquipItem3.performed += instance.OnEquipItem3;
-            @EquipItem3.canceled += instance.OnEquipItem3;
         }
 
         /// <summary>
@@ -1872,21 +1799,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @Inventory.started -= instance.OnInventory;
-            @Inventory.performed -= instance.OnInventory;
-            @Inventory.canceled -= instance.OnInventory;
             @SkipDialogue.started -= instance.OnSkipDialogue;
             @SkipDialogue.performed -= instance.OnSkipDialogue;
             @SkipDialogue.canceled -= instance.OnSkipDialogue;
-            @EquipPickaxe.started -= instance.OnEquipPickaxe;
-            @EquipPickaxe.performed -= instance.OnEquipPickaxe;
-            @EquipPickaxe.canceled -= instance.OnEquipPickaxe;
-            @EquipItem2.started -= instance.OnEquipItem2;
-            @EquipItem2.performed -= instance.OnEquipItem2;
-            @EquipItem2.canceled -= instance.OnEquipItem2;
-            @EquipItem3.started -= instance.OnEquipItem3;
-            @EquipItem3.performed -= instance.OnEquipItem3;
-            @EquipItem3.canceled -= instance.OnEquipItem3;
         }
 
         /// <summary>
@@ -1920,6 +1835,102 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // Paused
+    private readonly InputActionMap m_Paused;
+    private List<IPausedActions> m_PausedActionsCallbackInterfaces = new List<IPausedActions>();
+    private readonly InputAction m_Paused_Newaction;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Paused".
+    /// </summary>
+    public struct PausedActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public PausedActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Paused/Newaction".
+        /// </summary>
+        public InputAction @Newaction => m_Wrapper.m_Paused_Newaction;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Paused; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="PausedActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(PausedActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="PausedActions" />
+        public void AddCallbacks(IPausedActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PausedActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PausedActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="PausedActions" />
+        private void UnregisterCallbacks(IPausedActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PausedActions.UnregisterCallbacks(IPausedActions)" />.
+        /// </summary>
+        /// <seealso cref="PausedActions.UnregisterCallbacks(IPausedActions)" />
+        public void RemoveCallbacks(IPausedActions instance)
+        {
+            if (m_Wrapper.m_PausedActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="PausedActions.AddCallbacks(IPausedActions)" />
+        /// <seealso cref="PausedActions.RemoveCallbacks(IPausedActions)" />
+        /// <seealso cref="PausedActions.UnregisterCallbacks(IPausedActions)" />
+        public void SetCallbacks(IPausedActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PausedActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PausedActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="PausedActions" /> instance referencing this action map.
+    /// </summary>
+    public PausedActions @Paused => new PausedActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -2162,39 +2173,26 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPause(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Inventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnInventory(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "SkipDialogue" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSkipDialogue(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Paused" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="PausedActions.AddCallbacks(IPausedActions)" />
+    /// <seealso cref="PausedActions.RemoveCallbacks(IPausedActions)" />
+    public interface IPausedActions
+    {
         /// <summary>
-        /// Method invoked when associated input action "EquipPickaxe" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquipPickaxe(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "EquipItem2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquipItem2(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "EquipItem3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquipItem3(InputAction.CallbackContext context);
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

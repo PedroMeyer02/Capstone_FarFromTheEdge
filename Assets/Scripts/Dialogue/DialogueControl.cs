@@ -55,7 +55,7 @@ public class DialogueControl : MonoBehaviour
 
         if (characterType == CharacterType.Crafter && playerHit && !dialogueStarted && canInteract && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            GameManager.Instance.IsPlayedPaused = true;
+            GameManager.Instance.IsPlayerPaused = true;
 
             //if (quest.state == QuestState.InProgress)
             //{
@@ -83,7 +83,7 @@ public class DialogueControl : MonoBehaviour
         }
         else if (characterType == CharacterType.Alchemist && playerHit && !dialogueStarted && canInteract && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            GameManager.Instance.IsPlayedPaused = true;
+            GameManager.Instance.IsPlayerPaused = true;
 
             //if (quest.state == QuestState.InProgress)
             //{
@@ -129,7 +129,7 @@ public class DialogueControl : MonoBehaviour
         // PLAYER SELF-DIALOGUE ADVANCING
         if (dialogueStarted && characterType == CharacterType.Player)
         {
-            GameManager.Instance.IsPlayedPaused = true;
+            GameManager.Instance.IsPlayerPaused = true;
 
             if (Keyboard.current.eKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
             {
@@ -153,7 +153,7 @@ public class DialogueControl : MonoBehaviour
 
     public void EndDialogue()
     {
-        GameManager.Instance.IsPlayedPaused = false;
+        GameManager.Instance.IsPlayerPaused = false;
         dialogueBox.SetActive(false);
 
         var playerInput = GetComponent<PlayerInput>();
