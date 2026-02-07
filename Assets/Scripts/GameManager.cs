@@ -31,7 +31,7 @@ public class GameManager : Singleton<GameManager>
     IEnumerator GameStart()
     {
         IsPlayerPaused = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.25f);
         StartCoroutine(GameResume());
     }
     IEnumerator GameResume()
@@ -72,8 +72,8 @@ public class GameManager : Singleton<GameManager>
         if(Input.GetKeyDown(KeyCode.T))
         {
             //A3PortalActive = true;
-            A1Skill1Acquired = true;
-            A2Skill2Acquired = true;
+            //A1Skill1Acquired = true;
+            //A2Skill2Acquired = true;
             //A4Skill3Acquired = true;
         }
 
