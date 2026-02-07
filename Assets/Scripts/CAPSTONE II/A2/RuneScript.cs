@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RuneScript : MonoBehaviour
 {
+    public LoreStatues loreStatues;
     public GameObject UIDialogue;
     DialogueControl dialogueControl;
 
@@ -34,7 +35,7 @@ public class RuneScript : MonoBehaviour
             }
         }
 
-        if (dialogueControl.selfDialogueEventComplete)
+        if (dialogueControl.selfDialogueEventComplete && loreStatues == LoreStatues.Wanderer)
         {
             dialogueControl.selfDialogueEventComplete = false;
         }
@@ -50,4 +51,9 @@ public class RuneScript : MonoBehaviour
         }
     }
 
+}
+
+public enum LoreStatues
+{
+    Wanderer, A3, A4, A5
 }
