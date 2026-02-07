@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
     public bool isInteracting = false;
 
     public PlayerInput input;
+    public bool playerIsTrapped = false;
+    public int trapID = 0;
+    public int trapCount = 0;
+    public int trapFree = 0;
 
     public PlayerMovement playerMovement;
 
@@ -58,85 +62,52 @@ public class Player : MonoBehaviour
             playerMovement.enabled = false;
             isInteracting = true;
             input.enabled = false;
-            //animator.SetFloat("MoveSpeed", 0f);
-            //return;
         }
         else if (!GameManager.Instance.IsPlayerPaused)
         {
             playerMovement.enabled = true;
             isInteracting = false;
             input.enabled = true;
-            //// Update animation parameter every frame
-            //float speed = moveDirection.magnitude;
-            //animator.SetFloat("MoveSpeed", speed);
-
-            //// Flip the sprite
-            //GetFacingDirection(-moveDirection.x);
         }
+
+        if (playerIsTrapped)
+        {
+            GameManager.Instance.IsPlayerPaused = true;
+            
+            if(trapID == 1)
+            {
+                trapFree = 7;
+            }
+            else if (trapID == 2)
+            {
+                trapFree = 15;
+            }
+
+            if(Input.GetKeyDown(KeyCode.X))
+            {
+                trapCount++;
+
+                if (trapCount == trapFree)
+                {
+                    trapCount = 0;
+                    playerIsTrapped = false;
+                    GameManager.Instance.IsPlayerPaused = false;
+
+                    if (trapID == 1)
+                    {
+                        animator.SetTrigger("Trap1Free");
+                    }
+                    else
+                    {
+                        animator.SetTrigger("Trap2Free");
+                    }
+
+                }
+            }
+        }
+
     }
 
-    // Update is called once per frame
-    //void FixedUpdate()
-    //{
-    //    // Stop movement when paused
-    //    if (GameManager.Instance.IsPlayerPaused)
-    //    {            
-
-    //        rb.linearVelocity = Vector3.zero;
-    //        moveDirection = Vector2.zero;
-    //        return;
-
-    //    }
-    //    else
-    //    {
-
-    //        // This is an Movement implementation for Unity's Input System
-    //        Vector2 velocity = moveDirection * moveSpeed;
-    //        rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.y);
-
-    //        // Flip the player sprite based on movement direction
-    //        GetFacingDirection(-moveDirection.x);
-    //    }
-
-    //}
-
-    //#region Movement Methods
-
-    ///// <summary>
-    ///// Method that flips the player sprite based on direction
-    ///// </summary>
-    ///// <param name="moveDirection"></param>
-    ///// <returns></returns>
-    //private float GetFacingDirection(float moveDirection)
-    //{
-    //    if (moveDirection > 0)
-    //    {
-    //        spriteRenderer.flipX = false;
-    //        return 1f;
-    //    }
-    //    else if (moveDirection < 0)
-    //    {
-    //        spriteRenderer.flipX = true;
-    //        return -1f;
-    //    }
-
-    //    return 0f;
-    //}
-
-    ///// <summary>
-    ///// Called in Player's "Player Input" Component to move
-    ///// </summary>
-    ///// <param name="context"></param>
-    //public void OnMove(InputAction.CallbackContext context)
-    //{
-    //    if (context.action.inProgress && !isInteracting && !GameManager.Instance.IsPlayerPaused)
-    //    {
-    //        moveDirection = context.ReadValue<Vector2>();
-    //    }
-    //    else moveDirection = Vector3.zero;
-    //}
-
-    //#endregion
 
     #region Safety Net Methods
 

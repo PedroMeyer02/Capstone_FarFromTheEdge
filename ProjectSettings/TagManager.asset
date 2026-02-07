@@ -10,6 +10,8 @@ TagManager:
   - Skill1
   - Skill2
   - Skill3
+  - PA
+  - LP
   layers:
   - Default
   - TransparentFX
