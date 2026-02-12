@@ -87,6 +87,16 @@ public class Player : MonoBehaviour
             {
                 trapCount++;
 
+                if (trapID == 1)
+                {
+                    animator.SetTrigger("Trap1Click");
+                }
+                else
+                {
+                    animator.SetTrigger("Trap2Click");
+                }
+
+
                 if (trapCount == trapFree)
                 {
                     trapCount = 0;
