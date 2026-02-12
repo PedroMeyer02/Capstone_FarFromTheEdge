@@ -203,43 +203,6 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
-    #region Second Area
-
-    public void CheckArea2()
-    {
-        if (Pedestal.GetComponent<Pedestal>().PedestalCompleted)
-        {
-            Area2PedestalCompleted = true;
-        }
-    }
-
-    #endregion
-
-    #region Third Area
-
-    public bool CheckArea3Quest()
-    {
-        if (OreItemCount >= 3)
-        {
-            return Quest1Completed = true;
-        }
-        else
-        {
-            return Quest1Completed = false;
-        }
-    }
-
-    // Fire Pedestal for Now
-    public void CheckArea3()
-    {
-        if (FirePedestal.GetComponent<FirePedestal>().FirePedestalCompleted)
-        {
-            Area3PedestalCompleted = true;
-        }
-    }
-
-    #endregion
-
     #region Fourth Area
 
     public bool CheckAlchemistQuest()
@@ -281,49 +244,6 @@ public class GameManager : Singleton<GameManager>
             Debug.Log("Wrong Rune, Resetting puzzle");
             progress = 0;
         }
-    }
-
-    #endregion
-
-    #region 7th Area
-
-    /// <summary>
-    /// Maybe call it in one of the runes
-    /// </summary>
-    /// <returns></returns>
-    public bool CheckArea71()
-    {
-        if (Altar1.GetComponent<Altar>().isActivated &&
-            Altar2.GetComponent<Altar>().isActivated)
-        {
-            Debug.Log("Area 7.1 Set");
-
-            RuneLights[0].gameObject.SetActive(true);
-            RuneLights[1].gameObject.SetActive(true);
-
-            return Area1Set = true;
-        }
-        else
-        {
-            return  Area1Set = false;
-        }
-    }
-
-    public bool CheckArea72()
-    {
-        foreach (GameObject pedestal in Pedestals)
-        {
-            if (!pedestal.GetComponent<Lever>().isActivated)
-            {
-                return Area2Set = false;
-            }
-        }
-
-        RuneLights[2].gameObject.SetActive(true);
-        RuneLights[3].gameObject.SetActive(true);
-
-        Debug.Log("Area 7.2 Set");
-        return Area2Set = true;
     }
 
     #endregion

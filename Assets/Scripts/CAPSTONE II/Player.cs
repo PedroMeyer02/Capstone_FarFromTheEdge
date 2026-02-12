@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     //public int moveSpeed = 10;
 
     [Header("Item Utils")]
-    private IPlayerInteractable nearbyInteractable;
+    //private IPlayerInteractable nearbyInteractable;
     public bool isInteracting = false;
 
     public PlayerInput input;
@@ -156,69 +156,6 @@ public class Player : MonoBehaviour
 
     #region Collecting Item Methods
 
-    /// <summary>
-    ///  Collect Items BOI by Pressing E
-    /// </summary>
-    /// <param name="context"></param>
-    //public void OnInteract(InputAction.CallbackContext context)
-    //{
-    //    if (context.action.inProgress && nearbyInteractable != null && !isInteracting)
-    //    {
-    //        // If the object was destroyed, ignore
-    //        if (nearbyInteractable == null)
-    //        {
-    //            nearbyInteractable = null;
-    //            return;
-    //        }
-
-    //        // Pause Player
-    //        isInteracting = true;
-    //        GameManager.Instance.IsPlayerPaused = true;
-
-    //        moveDirection = Vector3.zero;
-    //        rb.linearVelocity = Vector3.zero;
-
-    //        animator.SetTrigger(collectParam);
-    //        nearbyInteractable.OnPlayerInteraction(this);
-
-    //        // Only clear for objects that are one-time (collectibles)
-    //        if (nearbyInteractable is Item)
-    //        {
-    //            nearbyInteractable = null;
-    //        }
-
-    //        // Resume Pause State (Number corresponds to collect animation time)
-    //        StartCoroutine(ResumeAfterPause(0.7540984f));
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("No interactable nearby or already interacting.");
-    //    }
-    //}
-
-    ///// <summary>
-    ///// Resume after the pause state
-    ///// </summary>
-    ///// <param name="delay"></param>
-    ///// <returns></returns>
-    //IEnumerator ResumeAfterPause(float delay)
-    //{
-    //    yield return new WaitForSeconds(delay);
-    //    GameManager.Instance.IsPlayerPaused = false;
-    //    isInteracting = false;
-
-    //    // Immediately apply movement
-    //    var playerInput = GetComponent<PlayerInput>();
-    //    if (playerInput != null)
-    //    {
-    //        var moveAction = playerInput.actions["Move"];
-    //        if (moveAction != null)
-    //        {
-    //            moveDirection = moveAction.ReadValue<Vector2>();
-    //        }
-    //    }
-    //}
-
     public void OnTriggerEnter(Collider other)
     {
         // Check the end of the game
@@ -230,96 +167,6 @@ public class Player : MonoBehaviour
             GameManager.Instance.GameWon();
         }
     }
-
-    /// <summary>
-    /// Visual Cue pop up 
-    /// </summary>
-    /// <param name="collision"></param>
-    public void OnTriggerStay(Collider collision)
-    {
-        if (collision.TryGetComponent(out IPlayerInteractable interactable))
-        {
-            nearbyInteractable = interactable;
-
-            // Tell the item to show its cue if it’s an Item
-            if (interactable is Item item)
-                item.ShowCue();
-
-            if (interactable is Lever lever)
-            {
-                if (!lever.isActivated)
-                    lever.ShowCue();
-                else
-                    lever.HideCue();
-            }
-
-            if (interactable is Pedestal pedestal)
-            {
-                if (!pedestal.PedestalCompleted && GameManager.Instance.PedalItemCount > 0)
-                    pedestal.ShowCue();
-                else
-                    pedestal.HideCue();
-            }
-
-            if (interactable is FirePedestal firePedestal)
-            {
-                if (!firePedestal.PedestalCompleted && GameManager.Instance.FireOrbItem > 0 && GameManager.Instance.HasFireOrbEquipped)
-                    firePedestal.ShowCue();
-                else
-                    firePedestal.HideCue();
-            }
-
-            if (interactable is LeverPedestal leverPedestal)
-            {
-                if (!leverPedestal.PedestalCompleted && !leverPedestal.isActivated)
-                    leverPedestal.ShowCue();
-                else
-                    leverPedestal.HideCue();
-            }
-
-            if (interactable is Altar altar)
-            {
-                if (!altar.isActivated)
-                    altar.ShowCue();
-                else
-                    altar.HideCue();
-            }
-        }
-
-        
-    }
-
-    /// <summary>
-    /// Disable Visual Cue when nearby items are missing (collected)
-    /// </summary>
-    /// <param name="other"></param>
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out IPlayerInteractable interactable))
-        {
-            // Tell the item to hide its cue if it’s an Item
-            if (interactable is Item item)
-                item.HideCue();
-
-            if (interactable is Pedestal pedestal)
-                pedestal.HideCue();
-
-            if (interactable is FirePedestal firePedestal)
-                firePedestal.HideCue();
-
-            if (interactable is LeverPedestal leverPedestal)
-                leverPedestal.HideCue();
-
-            if (interactable is Lever lever)
-                lever.HideCue();
-
-            if (interactable is Altar altar)
-                altar.HideCue();
-
-                nearbyInteractable = null;
-        }
-    }
-
     #endregion
 
     //NewCode
