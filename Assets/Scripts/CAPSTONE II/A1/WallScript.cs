@@ -51,6 +51,7 @@ public class WallScript : MonoBehaviour
     {
         GameManager.Instance.IsPlayerPaused = true;
         GameManager.Instance.CameraToObject(newCamera);
+        GameManager.Instance.A1WallOpen = true;
 
         yield return new WaitForSeconds(1f);
 
