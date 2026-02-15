@@ -13,6 +13,8 @@ public class WallScript : MonoBehaviour
     public Collider col;
     Animator anim;
 
+    bool isWallOpening = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,11 +24,24 @@ public class WallScript : MonoBehaviour
         wallEffect = GetComponentInChildren<VisualEffect>();
     }
 
+    private void Update()
+    {
+        if(isWallOpening)
+        {
+            GameManager.Instance.IsPlayerPaused = true;
+        }
+        else if (isWallOpen && !isWallOpening)
+        {
+            this.enabled = false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Skill1") && !isWallOpen)
         {
             StartCoroutine(WallOpen());
+            isWallOpening = true;
             isWallOpen = true;
             col.enabled = false;
         }
@@ -49,6 +64,7 @@ public class WallScript : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         GameManager.Instance.CameraToCharacter();
+        isWallOpening = false;
         GameManager.Instance.IsPlayerPaused = false;
         StopAllCoroutines();
     }
