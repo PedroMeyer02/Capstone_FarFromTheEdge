@@ -10,36 +10,32 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public Player player;
 
+    Vector3 position;
+    public bool isPulling = false;
 
     [Header("Player Stats")]
     // Don't adjust here, use the Player Component in the Inspector
     public int moveSpeed = 10;
 
 
-
-
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (GameManager.Instance.IsPlayerPaused)
         {
-            animator.SetFloat("MoveSpeed", 0f);
+            animator.SetFloat("MoveSpeedX", 0f);
+            animator.SetFloat("MoveSpeedY", 0f);
             return;
         }
         else
         {
 
             // Update animation parameter every frame
-            float speed = moveDirection.magnitude;
-            animator.SetFloat("MoveSpeed", speed);
+            float speedX = moveDirection.x;
+            animator.SetFloat("MoveSpeedX", speedX);
+
+            float speedY = moveDirection.y;
+            animator.SetFloat("MoveSpeedY", speedY);
 
             // Flip the sprite
             GetFacingDirection(-moveDirection.x);
@@ -51,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
         // Stop movement when paused
         if (GameManager.Instance.IsPlayerPaused)
         {
-
             rb.linearVelocity = Vector3.zero;
             moveDirection = Vector2.zero;
             return;
@@ -64,22 +59,60 @@ public class PlayerMovement : MonoBehaviour
             Vector2 velocity = moveDirection * moveSpeed;
             rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.y);
 
-            // Flip the player sprite based on movement direction
-            GetFacingDirection(-moveDirection.x);
+
+            if (position.y == transform.position.y)
+            {
+                isPulling = false;
+            }
+            else
+            {
+                PullDown();
+                isPulling = true;
+            }
+
+            position = player.transform.position;
+
+                // Flip the player sprite based on movement direction
+                GetFacingDirection(-moveDirection.x);
+            GetFacingDirectionUpDown(-moveDirection.y);
         }
 
+    }
+
+    public void PullDown()
+    {
+        Vector3 downForce = new Vector3(0, -10, 0);
+        rb.AddForce(downForce);
     }
 
     private float GetFacingDirection(float moveDirection)
     {
         if (moveDirection > 0)
         {
-            spriteRenderer.flipX = false;
+            animator.SetFloat("MoveSpeedX", -1);
             return 1f;
         }
         else if (moveDirection < 0)
         {
-            spriteRenderer.flipX = true;
+            animator.SetFloat("MoveSpeedX", 1);
+            return -1f;
+        }
+
+        return 0f;
+    }
+
+    private float GetFacingDirectionUpDown(float moveDirection)
+    {
+        if (moveDirection > 0)
+        {
+            animator.SetFloat("MoveSpeedY", -1);
+            animator.SetFloat("CheckUp", 0);
+            return 1f;
+        }
+        else if (moveDirection < 0)
+        {
+            animator.SetFloat("MoveSpeedY", 1);
+            animator.SetFloat("CheckUp", 1);
             return -1f;
         }
 
@@ -99,7 +132,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = Vector3.zero;
         moveDirection = Vector2.zero;
-        animator.SetFloat("MoveSpeed", 0f);
+        animator.SetFloat("MoveSpeedX", 0f);
+        animator.SetFloat("MoveSpeedY", 0f);
     }
 
 }

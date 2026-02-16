@@ -30,42 +30,42 @@ public class Dialogue : MonoBehaviour
     int startLinePerQuestStage = 0;
     int endLinePerQuestStage = 0;
 
-    public void StartQuestDialogue(Quest quest)
-    {
-        // Depending on the quest state, start from different lines
-        switch (quest.state)
-        {
-            case QuestState.NotStarted:
-                startLinePerQuestStage = 0;
-                endLinePerQuestStage = startIndexInProgressPhase - 1;
-                break;
-            case QuestState.InProgress:
-                startLinePerQuestStage = startIndexInProgressPhase;
-                endLinePerQuestStage = startIndexInCompletedPhase - 1;
-                break;
-            case QuestState.Completed:
-                startLinePerQuestStage = startIndexInCompletedPhase;
-                endLinePerQuestStage = dialogueText.Length - 1;
-                break;
-            default:
-                startLinePerQuestStage = 0;
-                endLinePerQuestStage = startIndexInProgressPhase - 1;
-                break;
-        }
-        index = startLinePerQuestStage;
+    //public void StartQuestDialogue(Quest quest)
+    //{
+    //    // Depending on the quest state, start from different lines
+    //    switch (quest.state)
+    //    {
+    //        case QuestState.NotStarted:
+    //            startLinePerQuestStage = 0;
+    //            endLinePerQuestStage = startIndexInProgressPhase - 1;
+    //            break;
+    //        case QuestState.InProgress:
+    //            startLinePerQuestStage = startIndexInProgressPhase;
+    //            endLinePerQuestStage = startIndexInCompletedPhase - 1;
+    //            break;
+    //        case QuestState.Completed:
+    //            startLinePerQuestStage = startIndexInCompletedPhase;
+    //            endLinePerQuestStage = dialogueText.Length - 1;
+    //            break;
+    //        default:
+    //            startLinePerQuestStage = 0;
+    //            endLinePerQuestStage = startIndexInProgressPhase - 1;
+    //            break;
+    //    }
+    //    index = startLinePerQuestStage;
 
-        // visuals
-        DeactivateTexts();
-        dialogueText[index].SetActive(true);
-        dialogueSprite.sprite = sprites[index];
-        characterName[index].SetActive(true);
-        characterIcon[index].SetActive(true);
+    //    // visuals
+    //    DeactivateTexts();
+    //    dialogueText[index].SetActive(true);
+    //    dialogueSprite.sprite = sprites[index];
+    //    characterName[index].SetActive(true);
+    //    characterIcon[index].SetActive(true);
 
-        // Start typing text
-        text = textComponent[index].text;
-        textComponent[index].text = "";
-        typingCoroutine = StartCoroutine(TypeLine(text));
-    }
+    //    // Start typing text
+    //    text = textComponent[index].text;
+    //    textComponent[index].text = "";
+    //    typingCoroutine = StartCoroutine(TypeLine(text));
+    //}
 
     public void StartPlayerDialogue()
     {
