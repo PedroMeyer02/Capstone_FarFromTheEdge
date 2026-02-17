@@ -50,12 +50,13 @@ public class FirstOrb : MonoBehaviour
         mistEffect.Stop();
         mistDissipate.Play();
 
+        GameManager.Instance.UIManager.skill1Acquired.SetActive(true);
+
         yield return new WaitForSeconds(1f);
 
         GameManager.Instance.CameraToCharacter();
         col.gameObject.SetActive(false);
 
-        GameManager.Instance.UIManager.skill1Acquired.SetActive(true);
 
         StopAllCoroutines();
     }
