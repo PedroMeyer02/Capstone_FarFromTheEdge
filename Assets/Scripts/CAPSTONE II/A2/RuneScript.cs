@@ -35,9 +35,9 @@ public class RuneScript : MonoBehaviour
             }
         }
 
-        if (dialogueControl.selfDialogueEventComplete && loreStatues == LoreStatues.Wanderer)
+        if (dialogueControl.dialogueStarted && loreStatues == LoreStatues.Wanderer)
         {
-            dialogueControl.selfDialogueEventComplete = false;
+            dialogueControl.dialogueStarted = false;
         }
     }
 

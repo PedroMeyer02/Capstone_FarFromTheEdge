@@ -985,14 +985,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736cb5e368bbb354f9cddcf2940d025d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueControl
-  characterType: 2
   dialogueBox: {fileID: 723680084}
-  selfDialogueEventComplete: 0
-  dialogueRange: 4
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  objectToActivate: {fileID: 0}
+  col: {fileID: 0}
+  dialogueStarted: 0
+  keyCooldown: 0
+  canType: 0
 --- !u!1 &51786820 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -794265448247393429, guid: efdddd68bde367044b940cd80925a7c2, type: 3}
@@ -5119,59 +5116,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 20, y: 5, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &222932571
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 222932572}
-  - component: {fileID: 222932573}
-  m_Layer: 5
-  m_Name: TriggerBox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &222932572
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222932571}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2091247287}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &222932573
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222932571}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 15, y: 5, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &223070433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7623,14 +7567,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736cb5e368bbb354f9cddcf2940d025d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueControl
-  characterType: 2
   dialogueBox: {fileID: 234357468}
-  selfDialogueEventComplete: 0
-  dialogueRange: 4
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  objectToActivate: {fileID: 0}
+  col: {fileID: 0}
+  dialogueStarted: 0
+  keyCooldown: 0
+  canType: 0
 --- !u!1 &322771189 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 01862a998b407d7468219945ae1e3c88, type: 3}
@@ -12927,14 +12868,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736cb5e368bbb354f9cddcf2940d025d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueControl
-  characterType: 2
   dialogueBox: {fileID: 150678384}
-  selfDialogueEventComplete: 0
-  dialogueRange: 4
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  objectToActivate: {fileID: 0}
+  col: {fileID: 0}
+  dialogueStarted: 0
+  keyCooldown: 0
+  canType: 0
 --- !u!1 &568594366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 01862a998b407d7468219945ae1e3c88, type: 3}
@@ -20514,7 +20452,7 @@ GameObject:
   - component: {fileID: 895193385}
   - component: {fileID: 895193384}
   m_Layer: 5
-  m_Name: PlayerText
+  m_Name: Text1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26664,14 +26602,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736cb5e368bbb354f9cddcf2940d025d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueControl
-  characterType: 2
   dialogueBox: {fileID: 628559129}
-  selfDialogueEventComplete: 0
-  dialogueRange: 4
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  objectToActivate: {fileID: 0}
+  col: {fileID: 0}
+  dialogueStarted: 0
+  keyCooldown: 0
+  canType: 0
 --- !u!1 &1189657571 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 01862a998b407d7468219945ae1e3c88, type: 3}
@@ -26984,7 +26919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1209052101}
   m_Layer: 5
-  m_Name: StartingPhase
+  m_Name: Texts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32522,7 +32457,7 @@ GameObject:
   - component: {fileID: 1442378850}
   - component: {fileID: 1442378849}
   m_Layer: 5
-  m_Name: PlayerText2
+  m_Name: Text2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39979,14 +39914,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736cb5e368bbb354f9cddcf2940d025d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueControl
-  characterType: 2
   dialogueBox: {fileID: 650022462}
-  selfDialogueEventComplete: 0
-  dialogueRange: 4
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  objectToActivate: {fileID: 0}
+  col: {fileID: 0}
+  dialogueStarted: 0
+  keyCooldown: 0
+  canType: 0
 --- !u!1001 &1740901744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45584,14 +45516,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736cb5e368bbb354f9cddcf2940d025d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueControl
-  characterType: 2
   dialogueBox: {fileID: 1451008919}
-  selfDialogueEventComplete: 0
-  dialogueRange: 4
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  objectToActivate: {fileID: 0}
+  col: {fileID: 0}
+  dialogueStarted: 0
+  keyCooldown: 0
+  canType: 0
 --- !u!1 &1973600483
 GameObject:
   m_ObjectHideFlags: 0
@@ -47753,6 +47682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091247287}
   - component: {fileID: 2091247288}
+  - component: {fileID: 2091247289}
   m_Layer: 5
   m_Name: A1_D01_StartingDialogue
   m_TagString: Untagged
@@ -47773,7 +47703,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 222932572}
   - {fileID: 1078616862}
   m_Father: {fileID: 1993292983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47789,14 +47718,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736cb5e368bbb354f9cddcf2940d025d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueControl
-  characterType: 2
   dialogueBox: {fileID: 1078616861}
-  selfDialogueEventComplete: 0
-  dialogueRange: 4
-  playerLayer:
+  col: {fileID: 2091247289}
+  dialogueStarted: 0
+  keyCooldown: 0
+  canType: 0
+--- !u!65 &2091247289
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091247286}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 8
-  objectToActivate: {fileID: 0}
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15, y: 5, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2091316023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48006,14 +47953,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736cb5e368bbb354f9cddcf2940d025d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueControl
-  characterType: 2
   dialogueBox: {fileID: 974647030}
-  selfDialogueEventComplete: 0
-  dialogueRange: 4
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  objectToActivate: {fileID: 0}
+  col: {fileID: 0}
+  dialogueStarted: 0
+  keyCooldown: 0
+  canType: 0
 --- !u!1 &2098404692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 01862a998b407d7468219945ae1e3c88, type: 3}
@@ -50815,14 +50759,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736cb5e368bbb354f9cddcf2940d025d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueControl
-  characterType: 0
   dialogueBox: {fileID: 3289712425304227641}
-  selfDialogueEventComplete: 0
-  dialogueRange: 2
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  objectToActivate: {fileID: 0}
+  col: {fileID: 0}
+  dialogueStarted: 0
+  keyCooldown: 0
+  canType: 0
 --- !u!224 &8967373328468156409
 RectTransform:
   m_ObjectHideFlags: 0

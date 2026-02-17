@@ -27,51 +27,12 @@ public class Dialogue : MonoBehaviour
     private Coroutine typingCoroutine;
 
     // Variables to handle dialogue lines per quest stage
-    int startLinePerQuestStage = 0;
-    int endLinePerQuestStage = 0;
+    int endDialogueCount = 0;
 
-    //public void StartQuestDialogue(Quest quest)
-    //{
-    //    // Depending on the quest state, start from different lines
-    //    switch (quest.state)
-    //    {
-    //        case QuestState.NotStarted:
-    //            startLinePerQuestStage = 0;
-    //            endLinePerQuestStage = startIndexInProgressPhase - 1;
-    //            break;
-    //        case QuestState.InProgress:
-    //            startLinePerQuestStage = startIndexInProgressPhase;
-    //            endLinePerQuestStage = startIndexInCompletedPhase - 1;
-    //            break;
-    //        case QuestState.Completed:
-    //            startLinePerQuestStage = startIndexInCompletedPhase;
-    //            endLinePerQuestStage = dialogueText.Length - 1;
-    //            break;
-    //        default:
-    //            startLinePerQuestStage = 0;
-    //            endLinePerQuestStage = startIndexInProgressPhase - 1;
-    //            break;
-    //    }
-    //    index = startLinePerQuestStage;
-
-    //    // visuals
-    //    DeactivateTexts();
-    //    dialogueText[index].SetActive(true);
-    //    dialogueSprite.sprite = sprites[index];
-    //    characterName[index].SetActive(true);
-    //    characterIcon[index].SetActive(true);
-
-    //    // Start typing text
-    //    text = textComponent[index].text;
-    //    textComponent[index].text = "";
-    //    typingCoroutine = StartCoroutine(TypeLine(text));
-    //}
-
-    public void StartPlayerDialogue()
+    public void StartDialogue()
     {
         // Set boundaries for player dialogues
-        startLinePerQuestStage = 0;
-        endLinePerQuestStage = dialogueText.Length - 1;
+        endDialogueCount = dialogueText.Length - 1;
 
         index = 0;
         DeactivateTexts();
@@ -104,48 +65,6 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    // Function to call the next text
-    public void OnNextText(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            GameManager.Instance.IsPlayerPaused = true;
-
-            if (isTyping)
-            {
-                StopCoroutine(typingCoroutine);
-                textComponent[index].text = text;
-                isTyping = false;
-                return;
-            }
-
-            if (index < endLinePerQuestStage)
-            {
-                index++;
-                DeactivateTexts();
-
-                dialogueSprite.sprite = sprites[index];
-                characterName[index].SetActive(true);
-                characterIcon[index].SetActive(true);
-                dialogueText[index].SetActive(true);
-
-                text = textComponent[index].text;
-                textComponent[index].text = "";
-                typingCoroutine = StartCoroutine(TypeLine(text));
-            }
-            else //if (index == dialogueText.Length - 1)
-            {
-                control.EndDialogue();
-                StopAllCoroutines();
-            }
-        }
-        else
-        {
-            return;
-        }
-    }
-
-    // For Player Dialogue
     public void NextText()
     {
         if (isTyping)
@@ -156,7 +75,7 @@ public class Dialogue : MonoBehaviour
             return;
         }
 
-        if (index < endLinePerQuestStage)
+        if (index < endDialogueCount)
         {
             index++;
             DeactivateTexts();
