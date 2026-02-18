@@ -4,12 +4,13 @@ using UnityEngine;
 public class TotemScript : MonoBehaviour
 {
     Collider col;
-    Animator anim;
+    public Animator anim;
 
     public GameObject newCamera;
-    bool isActive = false;
+    public bool isActive = false;
 
     Player player;
+    public DialogueControl control;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,16 +18,20 @@ public class TotemScript : MonoBehaviour
         col = GetComponent<Collider>();
         anim = GetComponent<Animator>();
         player = FindAnyObjectByType<Player>();
+    }
 
+    public void ActivateDialogue()
+    {
+        control.DialogueStart();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isActive)
-        {
-            isActive = true;
-            anim.SetTrigger("Active");
-        }
+        //if (!isActive)
+        //{
+        //    isActive = true;
+        //    anim.SetTrigger("Active");
+        //}
 
         if(other.CompareTag("Skill1"))
         {
@@ -37,16 +42,23 @@ public class TotemScript : MonoBehaviour
 
     IEnumerator Skill2Acquired()
     {
-        GameManager.Instance.IsPlayerPaused = true;
         GameManager.Instance.A2Skill2Acquired = true;
+        GameManager.Instance.IsPlayerPaused = true;
         GameManager.Instance.CameraToObject(newCamera);
-        player.GetComponent<Animator>().SetTrigger("OrbAcquisition");
-        
-        yield return new WaitForSeconds(2f);
-        anim.SetTrigger("Collected");
-        GameManager.Instance.CameraToCharacter();
 
         yield return new WaitForSeconds(1f);
+        player.GetComponent<Animator>().SetTrigger("OrbAcquisition");
+        
+        yield return new WaitForSeconds(0.1f);
+        GameManager.Instance.IsPlayerPaused = true;
+        yield return new WaitForSeconds(0.1f);
+        GameManager.Instance.IsPlayerPaused = true;
+        yield return new WaitForSeconds(0.1f);
+        GameManager.Instance.IsPlayerPaused = true;
+
+        yield return new WaitForSeconds(3f);
+        anim.SetTrigger("Collected");
+        GameManager.Instance.CameraToCharacter();
         GameManager.Instance.UIManager.skill2Acquired.SetActive(true);
         
         StopAllCoroutines();

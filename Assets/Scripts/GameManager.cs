@@ -61,22 +61,29 @@ public class GameManager : Singleton<GameManager>
     //A2
     public bool A2Skill2Acquired { get; set; } = false;
     public bool A2FirstUseSkill { get; set; } = false;
+    public bool A2isFreeFromTrap { get; set; } = false;
+    public bool A2FinalDialogueActivate { get; set; } = false;
 
     //A3
     public bool A3PortalActive { get; set; } = false;
 
     //A4
     public bool A4Skill3Acquired { get; set; } = false;
+    public bool A4isFreeFromTrap { get; set; } = false;
     public int A4PortalsActives { get; set; } = 0;
+    public bool A4FinalDialogueActivate { get; set; } = false;
+
+
     private void Update()
     {
         //A3 REMOVE
         if(Input.GetKeyDown(KeyCode.T))
         {
             //A3PortalActive = true;
-            //A1Skill1Acquired = true;
-            //A2Skill2Acquired = true;
+            A1Skill1Acquired = true;
+            A2Skill2Acquired = true;
             //A4Skill3Acquired = true;
+            //A2isFreeFromTrap = true;
         }
 
         //if(Input.GetKeyDown(KeyCode.J))
@@ -98,10 +105,6 @@ public class GameManager : Singleton<GameManager>
 
     //TextSpeed for menu settings
     public float textSpeed = 0.01f;
-
-
-
-    
 
     /// <summary>
     /// Pause the Game on pressing ESC, Attached to Player Input 

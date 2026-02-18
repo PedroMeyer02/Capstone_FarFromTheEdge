@@ -7,6 +7,8 @@ public class BridgesActivation : MonoBehaviour
     Collider col;
     Animator anim;
 
+    bool playerEntered = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +20,12 @@ public class BridgesActivation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("Player") && bridgeStates == BridgeStates.Wanderer && !playerEntered)
+        {
+            anim.SetBool("isDestroyed", true);
+            playerEntered = true;
+        }
+        
         if (other.CompareTag("Skill2") && bridgeStates == BridgeStates.Wanderer)
         {
             anim.SetBool("isDestroyed", false);

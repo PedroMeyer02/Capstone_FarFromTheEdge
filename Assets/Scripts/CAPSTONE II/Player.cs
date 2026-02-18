@@ -106,10 +106,12 @@ public class Player : MonoBehaviour
                     if (trapID == 1)
                     {
                         animator.SetTrigger("Trap1Free");
+                        GameManager.Instance.A2isFreeFromTrap = true;
                     }
                     else
                     {
                         animator.SetTrigger("Trap2Free");
+                        GameManager.Instance.A4isFreeFromTrap = true;
                     }
 
                 }

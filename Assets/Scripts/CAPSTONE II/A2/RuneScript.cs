@@ -34,11 +34,6 @@ public class RuneScript : MonoBehaviour
                 col.enabled = true;
             }
         }
-
-        if (dialogueControl.dialogueStarted && loreStatues == LoreStatues.Wanderer)
-        {
-            dialogueControl.dialogueStarted = false;
-        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -14,6 +14,8 @@ public class DialogueControl : MonoBehaviour
     public float keyCooldown = 0;
     public bool canType = false;
 
+    public bool isSkillRelated = false;
+
     void Awake()
     {
         dialogueComponent = dialogueBox.GetComponent<Dialogue>();
@@ -44,9 +46,9 @@ public class DialogueControl : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && !dialogueStarted)
+        if((other.CompareTag("Player") || other.CompareTag("Skill1")) && !dialogueStarted)
         {
             DialogueStart();
         }
@@ -67,6 +69,8 @@ public class DialogueControl : MonoBehaviour
         dialogueBox.SetActive(false);
 
         dialogueStarted = false;
-        this.gameObject.SetActive(false);
+
+        if(!isSkillRelated) this.gameObject.SetActive(false);
+ 
     }
 }
