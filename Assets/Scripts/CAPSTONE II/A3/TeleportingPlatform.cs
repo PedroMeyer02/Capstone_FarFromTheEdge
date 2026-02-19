@@ -14,6 +14,7 @@ public class TeleportingPlatform : MonoBehaviour
     bool portalActive = false;
 
     VisualEffect teleportEffect;
+    public Light activeLight;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,7 +36,8 @@ public class TeleportingPlatform : MonoBehaviour
     {
         if (GameManager.Instance.A3PortalActive && !portalActive)
         {
-            teleportEffect.Play();
+            //teleportEffect.Play();
+            activeLight.enabled = true;
             portalActive = true;
         }
 
