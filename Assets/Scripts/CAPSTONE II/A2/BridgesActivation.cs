@@ -16,6 +16,7 @@ public class BridgesActivation : MonoBehaviour
         
         if (bridgeStates == BridgeStates.Platforms) anim = GetComponentInChildren<Animator>();
         if (bridgeStates == BridgeStates.Wanderer) anim = GetComponent<Animator>();
+        if (bridgeStates == BridgeStates.Portal)   anim = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,10 +36,15 @@ public class BridgesActivation : MonoBehaviour
         {
             anim.SetTrigger("Bridge");
         }
+
+        if (other.CompareTag("Skill2") && bridgeStates == BridgeStates.Portal)
+        {
+            anim.SetTrigger("Activate");
+        }
     }
 }
 
 public enum BridgeStates
 {
-    Wanderer, Platforms
+    Wanderer, Platforms, Portal
 }
