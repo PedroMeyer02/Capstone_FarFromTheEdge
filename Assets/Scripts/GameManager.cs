@@ -81,7 +81,7 @@ public class GameManager : Singleton<GameManager>
         {
             //A3PortalActive = true;
             //A1Skill1Acquired = true;
-            //A2Skill2Acquired = true;
+            A2Skill2Acquired = true;
             //A4Skill3Acquired = true;
             //A2isFreeFromTrap = true;
         }
