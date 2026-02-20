@@ -58,5 +58,9 @@ public class SkillAcquiredScreen : MonoBehaviour
         {
             GameManager.Instance.IsPlayerPaused = true;
         }
+        if (skillID == 3)
+        {
+            GameManager.Instance.IsPlayerPaused = false;
+        }
     }
 }
