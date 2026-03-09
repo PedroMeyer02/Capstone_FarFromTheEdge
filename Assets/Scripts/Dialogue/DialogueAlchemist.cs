@@ -122,6 +122,9 @@ public class DialogueAlchemist : MonoBehaviour
             Animator anim = GetComponentInParent<Animator>();
             anim.SetTrigger("Vanish");
             this.gameObject.SetActive(false);
+            player.GetComponent<Animator>().SetTrigger("OrbAcquisition");
+            GameManager.Instance.A4Skill3Acquired = true;
+            GameManager.Instance.UIManager.skill3Acquired.SetActive(true);
         }
     }
 
