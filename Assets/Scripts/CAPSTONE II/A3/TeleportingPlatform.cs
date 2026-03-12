@@ -36,7 +36,7 @@ public class TeleportingPlatform : MonoBehaviour
     {
         if (GameManager.Instance.A3PortalActive && !portalActive)
         {
-            //teleportEffect.Play();
+            teleportEffect.Play();
             activeLight.enabled = true;
             portalActive = true;
         }

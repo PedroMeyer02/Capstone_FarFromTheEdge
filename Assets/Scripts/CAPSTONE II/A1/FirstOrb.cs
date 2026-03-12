@@ -7,8 +7,6 @@ public class FirstOrb : MonoBehaviour
 {
     Collider col;
     [SerializeField] VisualEffect orbEffect;
-    [SerializeField] VisualEffect mistEffect;
-    [SerializeField] VisualEffect mistDissipate;
     [SerializeField] Animator orbAnimator;
     public GameObject newCamera;
 
@@ -47,8 +45,6 @@ public class FirstOrb : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         orbEffect.Stop();
-        mistEffect.Stop();
-        mistDissipate.Play();
 
         GameManager.Instance.UIManager.skill1Acquired.SetActive(true);
 
