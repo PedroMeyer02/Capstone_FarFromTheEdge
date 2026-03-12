@@ -14,7 +14,7 @@ public class BackgroundLoad : MonoBehaviour
     [Header("UI References")]
     //public Image loadingAnimationImage;
     //public Sprite[] animationSprites; // Should contain exactly 2 sprites
-    public TMP_Text progressText;
+    //public TMP_Text progressText;
     public TMP_Text pressAnyButtonText;
     //public GameObject progressBarContainer;
 
@@ -24,6 +24,7 @@ public class BackgroundLoad : MonoBehaviour
 
     private AsyncOperation loadingOperation;
     private bool isLoadingComplete = false;
+    public bool isAnimationEnd = false;
     //private bool animationActive = false;
     //private int currentSpriteIndex = 0;
 
@@ -58,7 +59,7 @@ public class BackgroundLoad : MonoBehaviour
             progress = Mathf.Clamp01(loadingOperation.progress / 0.9f);
 
             // Update progress text
-            progressText.text = $"Loading... {Mathf.Round(progress * 100)}%";
+            //progressText.text = $"Loading... {Mathf.Round(progress * 100)}%";
 
             // Check if loading is "complete" (reached 90%)
             if (loadingOperation.progress >= 0.9f && timer >= fakeLoadingMinTime)
@@ -78,7 +79,7 @@ public class BackgroundLoad : MonoBehaviour
     void Update()
     {
         // Check for any input when loading is complete
-        if (isLoadingComplete && Keyboard.current.eKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
+        if (isLoadingComplete && isAnimationEnd && Input.anyKey)
         {
             //animationActive = false;
             loadingOperation.allowSceneActivation = true;
