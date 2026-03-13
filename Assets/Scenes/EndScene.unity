@@ -661,9 +661,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: b5bc4e2fab8296a44b477987da1cfd3f, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: b5bc4e2fab8296a44b477987da1cfd3f, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 044acf647d1d3a746a12e0fd48154647, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: a15e5ed5cdc604f4d91d24910256f1df, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: a15e5ed5cdc604f4d91d24910256f1df, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 8f771218b0f6e4e4792c24fcf6f7532f, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -708,7 +708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 699866f12d6184c40b0a8997b2bd8ee5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bba154d1640d2a84f85cbcd24df7fee4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -760,7 +760,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 168, y: 0}
   m_SizeDelta: {x: 679.2371, y: 295.2546}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1921144123
@@ -785,8 +785,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You have reached the ending for now...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -338.01868, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
