@@ -83,7 +83,7 @@ public class GameManager : Singleton<GameManager>
             A1Skill1Acquired = true;
             A2Skill2Acquired = true;
             //A4Skill3Acquired = true;
-            A2isFreeFromTrap = true;
+            //wA2isFreeFromTrap = true;
         }
 
         //if(Input.GetKeyDown(KeyCode.J))

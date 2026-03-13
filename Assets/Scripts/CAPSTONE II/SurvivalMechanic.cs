@@ -1,8 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class SurvivalMechanic : MonoBehaviour
 {
+    //Post-processing settings
+    [SerializeField] Volume renderVolume;
+    Vignette vignette;
+    ChromaticAberration chromaticAberration;
+    Bloom bloom;
+    FilmGrain filmGrain;
+    float chromaticIntensity = 0f;
+    float vignetteIntensity = 0f;
+
     Collider col;
 
     public bool groundCheckLP = false;
@@ -20,6 +31,11 @@ public class SurvivalMechanic : MonoBehaviour
     {
         col = GetComponent<Collider>();
         anim = GetComponentInParent<Animator>();
+
+        renderVolume.profile.TryGet(out  vignette);
+        renderVolume.profile.TryGet(out chromaticAberration);
+        renderVolume.profile.TryGet(out bloom);
+        renderVolume.profile.TryGet(out filmGrain);
     }
 
     // Update is called once per frame
@@ -27,6 +43,8 @@ public class SurvivalMechanic : MonoBehaviour
     {
         if(activateDamage)
         {
+
+            
             if(GameManager.Instance.IsPlayerPaused)
             {
                 return;
@@ -38,22 +56,40 @@ public class SurvivalMechanic : MonoBehaviour
             }
 
 
-            if(survivalTimer >= 5f)
+            if(survivalTimer >= 3f)
             {
                 survivalCount++;
                 survivalTimer = 0f;
                 anim.SetTrigger("Glitch");
             }
 
-            if (survivalCount >= 9)
+            if (survivalCount >= 7)
             {
                 SceneManager.LoadScene("EndScene");
             }
+
+            chromaticIntensity = Mathf.Lerp(0f, 0.1f, 1f);
+            chromaticAberration.intensity.value = chromaticIntensity;
+
+            vignetteIntensity = Mathf.Lerp(0f, 0.4f, 1f);
+            vignette.intensity.value = vignetteIntensity;
+
+            filmGrain.intensity.value = 1;
+            bloom.intensity.value = 1;
         }
         else
         {
             survivalTimer = 0f;
             survivalCount = 0;
+
+            chromaticIntensity = 0;
+            chromaticAberration.intensity.value = chromaticIntensity;
+
+            vignetteIntensity = 0;
+            vignette.intensity.value = vignetteIntensity;
+
+            filmGrain.intensity.value = 0;
+            bloom.intensity.value = 0;
         }
        
     }

@@ -20,13 +20,15 @@ public class PressKey : MonoBehaviour
             KeyObject.SetActive(false);
         }
 
-        if (GameManager.Instance.A2FirstUseSkill && keyPressed == KeyPressed.two)
+        if(!GameManager.Instance.A2Skill2Acquired && keyPressed == KeyPressed.two)
         {
             col.enabled = false;
-            KeyObject.SetActive(false);
         }
-
-
+        
+        if (GameManager.Instance.A2Skill2Acquired && keyPressed == KeyPressed.two)
+        {
+            col.enabled = true;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -37,6 +39,22 @@ public class PressKey : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         KeyObject.SetActive(false);
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Skill2"))
+        {
+            col.enabled = false;
+            KeyObject.SetActive(false);
+        }
+
+        if (other.CompareTag("Skill3"))
+        {
+            col.enabled = false;
+            KeyObject.SetActive(false);
+        }
     }
 }
 

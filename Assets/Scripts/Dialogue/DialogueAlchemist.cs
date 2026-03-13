@@ -6,6 +6,8 @@ public class DialogueAlchemist : MonoBehaviour
     public GameObject dialogueBox2;
     public GameObject dialogueBox3;
 
+    public Animator orbAnim;
+
     public Collider col;
 
     public bool dialogueStarted = false;
@@ -114,6 +116,7 @@ public class DialogueAlchemist : MonoBehaviour
             player.GetComponent<Animator>().SetTrigger("Trapped2");
             Animator anim = GetComponentInParent<Animator>();
             anim.SetTrigger("Attack");
+            orbAnim.SetTrigger("Attack");
             isSecondPartDone = true;
             dialogueComponent = dialogueBox3.GetComponent<DialogueFromAlchemist>();
         }
@@ -121,6 +124,7 @@ public class DialogueAlchemist : MonoBehaviour
         {
             Animator anim = GetComponentInParent<Animator>();
             anim.SetTrigger("Vanish");
+            orbAnim.SetTrigger("Vanish");
             this.gameObject.SetActive(false);
             player.GetComponent<Animator>().SetTrigger("OrbAcquisition");
             GameManager.Instance.A4Skill3Acquired = true;
