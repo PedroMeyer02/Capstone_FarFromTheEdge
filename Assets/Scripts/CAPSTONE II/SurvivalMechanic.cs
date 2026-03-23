@@ -65,7 +65,7 @@ public class SurvivalMechanic : MonoBehaviour
 
             if (survivalCount >= 7)
             {
-                SceneManager.LoadScene("EndScene");
+                SceneManager.LoadScene("02_LoseScene");
             }
 
             chromaticIntensity = Mathf.Lerp(0f, 0.1f, 1f);

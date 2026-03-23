@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public string sceneToLoad;
+    public Animator anim;
 
     public void LoadScene()
     {
@@ -20,4 +21,27 @@ public class MenuManager : MonoBehaviour
 #endif
     }
 
+    public void OpenCredits()
+    {
+        anim.SetTrigger("OpenCredits");
+        Debug.Log("Triggered");
+    }
+
+    public void CloseCredits()
+    {
+        anim.SetTrigger("CloseCredits");
+        Debug.Log("Triggered2");
+    }
+
+    public void OpenSettings()
+    {
+        anim.SetTrigger("OpenSettings");
+        Debug.Log("Triggered");
+    }
+
+    public void CloseSettings()
+    {
+        anim.SetTrigger("CloseSettings");
+        Debug.Log("Triggered2");
+    }
 }
