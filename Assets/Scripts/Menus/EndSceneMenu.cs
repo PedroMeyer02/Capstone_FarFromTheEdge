@@ -5,25 +5,18 @@ using UnityEngine.SceneManagement;
 public class EndSceneMenu : MonoBehaviour
 {
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void MainMenu()
     {
-
+        SceneManager.LoadScene("00_MenuScene");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void OnApplicationQuit()
+    public void ExitGame()
     {
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
 #else
         Application.Quit();
-#endif    
+#endif
     }
 
 }
