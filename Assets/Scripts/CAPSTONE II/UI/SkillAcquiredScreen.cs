@@ -8,6 +8,11 @@ public class SkillAcquiredScreen : MonoBehaviour
     float timer = 0;
 
     public int skillID = 0;
+
+    [SerializeField] GameObject skill1;
+    [SerializeField] GameObject skill2;
+    [SerializeField] GameObject skill3;
+
     
     // Update is called once per frame
     void Update()
@@ -30,7 +35,7 @@ public class SkillAcquiredScreen : MonoBehaviour
     {
         UIAnim.SetTrigger("FadeOut");
         yield return new WaitForSeconds(1f);
-        
+
         if(skillID == 2)
         {
             GameManager.Instance.IsPlayerPaused = true;
@@ -52,14 +57,17 @@ public class SkillAcquiredScreen : MonoBehaviour
     {
         if(skillID == 1)
         {
+            skill1.SetActive(true);
             GameManager.Instance.IsPlayerPaused = false;
         }
         if (skillID == 2)
         {
+            skill2.SetActive(true);
             GameManager.Instance.IsPlayerPaused = true;
         }
         if (skillID == 3)
         {
+            skill3.SetActive(true);
             GameManager.Instance.IsPlayerPaused = false;
         }
     }

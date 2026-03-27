@@ -61,6 +61,7 @@ public class TransitionScene : MonoBehaviour
 
         if (index >= 5)
         {
+            anim.SetTrigger("Image06");
             timerEnd = true;
             playImage.SetActive(true);
             bgLoad.isAnimationEnd = true; 
