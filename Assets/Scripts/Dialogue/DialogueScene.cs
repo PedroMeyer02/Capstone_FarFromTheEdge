@@ -55,24 +55,34 @@ public class DialogueScene : MonoBehaviour
             keyCooldown = 0;
         }
 
-        if(GameManager.Instance.A2isFreeFromTrap && !dialogueStarted && !isSecondPartDone)
-        {
+        //if(GameManager.Instance.A2isFreeFromTrap && !dialogueStarted && !isSecondPartDone)
+        //{
 
+        //    dialogueComponent = dialogueBox2.GetComponent<DialogueFromScene>();
+
+        //    isFirstPartDone = true;
+        //    isSecondPartDone = true;
+        //    DialogueStart();
+        //}
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player") && GameManager.Instance.A2RuneWasActivated)
+        {
             dialogueComponent = dialogueBox2.GetComponent<DialogueFromScene>();
 
             isFirstPartDone = true;
             isSecondPartDone = true;
             DialogueStart();
         }
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && !dialogueStarted)
+        
+        if (other.CompareTag("Player") && !dialogueStarted && !isFirstPartDone)
         {
             DialogueStart();
         }
+
     }
 
     public void DialogueStart()
@@ -97,15 +107,16 @@ public class DialogueScene : MonoBehaviour
 
         if(!isFirstPartDone)
         {
-            player.trapID = 1;
-            player.playerIsTrapped = true;
-            player.GetComponent<Animator>().SetTrigger("Trapped1");
+            //player.trapID = 1;
+            //player.playerIsTrapped = true;
+            //player.GetComponent<Animator>().SetTrigger("Trapped1");
             isFirstPartDone = true;
-            Animator anim = GetComponentInParent<Animator>();
-            anim.SetTrigger("Attack");
+
         }
         else
         {
+            Animator anim = GetComponentInParent<Animator>();
+            anim.SetTrigger("Attack");
             totemScript.isActive = true;
             totemScript.anim.SetTrigger("Active");
             this.gameObject.SetActive(false);

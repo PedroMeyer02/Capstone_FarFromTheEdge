@@ -64,6 +64,8 @@ public class GameManager : Singleton<GameManager>
     public bool A2isFreeFromTrap { get; set; } = false;
     public bool A2FinalDialogueActivate { get; set; } = false;
 
+    public bool A2RuneWasActivated { get; set; } = false;
+
     //A3
     public bool A3PortalActive { get; set; } = false;
 

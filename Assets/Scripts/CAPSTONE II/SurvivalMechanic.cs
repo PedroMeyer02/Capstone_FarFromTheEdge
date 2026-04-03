@@ -17,7 +17,7 @@ public class SurvivalMechanic : MonoBehaviour
     Collider col;
 
     public bool groundCheckLP = false;
-    //bool groundCheckPA = false;
+    public bool groundCheckPA = false;
 
     public bool activateDamage = false;
 
@@ -97,30 +97,88 @@ public class SurvivalMechanic : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("LP"))
+        if (other.CompareTag("LP"))
         {
             groundCheckLP = true;
-            //groundCheckPA = false;
         }
-        
-        if(other.CompareTag("PA"))
+
+        else if (other.CompareTag("PA"))
         {
-            groundCheckLP = false;
-            //groundCheckPA = true;
+            groundCheckPA = true;
         }
+
+        CheckCondition();
+
+        //if(other.CompareTag("LP"))
+        //{
+        //   groundCheckLP = true;
+        //   //groundCheckPA = false;
+        //}
+        
+        //else if(other.CompareTag("PA"))
+        //{
+        //    groundCheckLP = false;
+        //    //groundCheckPA = true;
+        //}
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("LP") && groundCheckLP)
+        //if (other.CompareTag("LP") && groundCheckLP)
+        //{
+        //    activateDamage = true;
+
+        //}
+
+        //else if (other.CompareTag("PA"))
+        //{
+        //    activateDamage = false;
+        //}
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("LP"))
         {
-            activateDamage = true;
-               
+            groundCheckLP = false;
         }
 
-        else if(other.CompareTag("PA"))
+        else if (other.CompareTag("PA"))
+        {
+            groundCheckPA = false;
+        }
+
+            CheckCondition();
+
+    }
+
+    private void CheckCondition()
+    {
+        Debug.Log("ConditionChecked");
+        
+        if(groundCheckLP && groundCheckPA)
         {
             activateDamage = false;
+            Debug.Log("ConditionChecked _ 01");
+
+        }
+
+        else if (!groundCheckLP && groundCheckPA)
+        {
+            activateDamage = false;
+            Debug.Log("ConditionChecked _ 02");
+        }
+
+        else if (groundCheckLP && !groundCheckPA)
+        {
+            activateDamage = true;
+            Debug.Log("ConditionChecked _ 03");
+        }
+
+        else 
+        { 
+            activateDamage = false;
+            Debug.Log("ConditionChecked _ 04");
         }
     }
 }
