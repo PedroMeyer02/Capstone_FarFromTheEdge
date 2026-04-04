@@ -171,7 +171,7 @@ public class GameManager : Singleton<GameManager>
 
     private void LoadGameWonScene()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("EndScene");
     }
 
     #endregion
