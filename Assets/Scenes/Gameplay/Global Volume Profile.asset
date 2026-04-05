@@ -609,10 +609,10 @@ MonoBehaviour:
     m_Value: 100
   redOutGreenIn:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 11
   redOutBlueIn:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 4
   greenOutRedIn:
     m_OverrideState: 1
     m_Value: 0
