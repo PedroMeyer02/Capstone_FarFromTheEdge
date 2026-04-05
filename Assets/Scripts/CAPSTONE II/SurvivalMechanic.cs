@@ -208,8 +208,8 @@ public class SurvivalMechanic : MonoBehaviour
     }
 
     IEnumerator FadeInCurse()
-    {        
-        
+    {
+        //SoundManager.PlaySound(SoundType.Amiance2);
         filmGrain.intensity.value = 1;
         bloom.intensity.value = 1;
 
@@ -262,7 +262,7 @@ public class SurvivalMechanic : MonoBehaviour
 
     IEnumerator FadeOutCurse()
     {
-
+        //SoundManager.PlaySound(SoundType.Ambiance1);
         filmGrain.intensity.value = 0;
         bloom.intensity.value = 0;
 
