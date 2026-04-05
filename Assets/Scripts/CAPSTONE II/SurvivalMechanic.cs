@@ -117,17 +117,30 @@ public class SurvivalMechanic : MonoBehaviour
         CheckCondition();
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("LP"))
+        if (other.CompareTag("LP"))
         {
-            groundCheckLP = false;
+            groundCheckLP = true;
         }
 
-        else if (other.CompareTag("PA"))
+        if (other.CompareTag("PA"))
         {
-            groundCheckPA = false;
+            groundCheckPA = true;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+       if(other.CompareTag("LP"))
+       {
+           groundCheckLP = false;
+       }
+
+       if (other.CompareTag("PA"))
+       {
+            groundCheckPA = false;
+       }
 
             CheckCondition();
 
