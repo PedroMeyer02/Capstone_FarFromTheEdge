@@ -522,7 +522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -408, y: -77}
+  m_AnchoredPosition: {x: -408, y: -272}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &970933695
@@ -678,7 +678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -408, y: -201}
+  m_AnchoredPosition: {x: -408, y: -396}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1054590038
@@ -1033,7 +1033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -151, y: 303}
+  m_AnchoredPosition: {x: -151, y: 136}
   m_SizeDelta: {x: 679.2371, y: 295.2546}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1680164428
@@ -1056,7 +1056,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You have reached \nthe ending for now.\nThank you for playing!"
+  m_text: "You have reached \nthe ending for now.\n\nThe adventure continues.\n\nThank
+    you for playing!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a54dc478111711041aa1c461db5f808a, type: 2}
   m_sharedMaterial: {fileID: -6974069967388800389, guid: a54dc478111711041aa1c461db5f808a, type: 2}

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DialogueAlchemist : MonoBehaviour
@@ -7,6 +8,7 @@ public class DialogueAlchemist : MonoBehaviour
     public GameObject dialogueBox3;
 
     public Animator orbAnim;
+    public Animator finalSceneAnim;
 
     public Collider col;
 
@@ -59,11 +61,11 @@ public class DialogueAlchemist : MonoBehaviour
             keyCooldown = 0;
         }
 
-        if (GameManager.Instance.A4isFreeFromTrap && !trapFree)
-        {
-            DialogueStart();
-            trapFree = true;
-        }
+        //if (GameManager.Instance.A4isFreeFromTrap && !trapFree)
+        //{
+        //    DialogueStart();
+        //    trapFree = true;
+        //}
 
     }
 
@@ -111,14 +113,17 @@ public class DialogueAlchemist : MonoBehaviour
         }
         else if(isFirstPartDone && !isSecondPartDone)
         {
-            player.trapID = 2;
-            player.playerIsTrapped = true;
-            player.GetComponent<Animator>().SetTrigger("Trapped2");
+            //player.trapID = 2;
+            //player.playerIsTrapped = true;
+            //player.GetComponent<Animator>().SetTrigger("Trapped2");
+            GameManager.Instance.IsPlayerPaused = true;
             Animator anim = GetComponentInParent<Animator>();
             anim.SetTrigger("Attack");
             orbAnim.SetTrigger("Attack");
             isSecondPartDone = true;
             dialogueComponent = dialogueBox3.GetComponent<DialogueFromAlchemist>();
+
+            StartCoroutine(FinalScene());
         }
         else
         {
@@ -129,6 +134,8 @@ public class DialogueAlchemist : MonoBehaviour
             player.GetComponent<Animator>().SetTrigger("OrbAcquisition");
             GameManager.Instance.A4Skill3Acquired = true;
             GameManager.Instance.UIManager.skill3Acquired.SetActive(true);
+            finalSceneAnim.SetTrigger("Deactivate");
+
         }
     }
 
@@ -136,5 +143,18 @@ public class DialogueAlchemist : MonoBehaviour
     {
         Animator anim = GetComponentInParent<Animator>();
         anim.SetTrigger("Transform");
+    }
+
+    IEnumerator FinalScene()
+    {
+        yield return new WaitForSeconds(2f);
+
+        finalSceneAnim.SetTrigger("Activate");
+
+        yield return new WaitForSeconds(5f);
+
+        DialogueStart();
+
+       StopAllCoroutines();
     }
 }

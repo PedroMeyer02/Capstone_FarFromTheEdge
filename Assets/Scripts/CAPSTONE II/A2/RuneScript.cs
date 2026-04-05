@@ -40,6 +40,7 @@ public class RuneScript : MonoBehaviour
     {
         if (other.CompareTag("Skill1") && !isActive)
         {
+            GameManager.Instance.A2RuneWasActivated = true;
             anim.SetBool("Active", true);
             isActive = true;
             col.enabled = false;
