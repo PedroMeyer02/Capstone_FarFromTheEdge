@@ -112,6 +112,7 @@ public class SurvivalMechanic : MonoBehaviour
         else if (other.CompareTag("PA"))
         {
             groundCheckPA = true;
+            groundCheckLP = false;
         }
 
         CheckCondition();
@@ -132,10 +133,10 @@ public class SurvivalMechanic : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-       if(other.CompareTag("LP"))
-       {
-           groundCheckLP = false;
-       }
+       //if(other.CompareTag("LP"))
+       //{
+       //    groundCheckLP = false;
+       //}
 
        if (other.CompareTag("PA"))
        {
