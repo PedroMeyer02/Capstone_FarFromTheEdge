@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Animator animator;
     public Player player;
+    public AudioSource audioSource;
 
     Vector3 position;
     public bool isPulling = false;
@@ -124,8 +125,14 @@ public class PlayerMovement : MonoBehaviour
         if (context.action.inProgress && !player.isInteracting && !GameManager.Instance.IsPlayerPaused)
         {
             moveDirection = context.ReadValue<Vector2>();
+            audioSource.Play();
         }
-        else moveDirection = Vector3.zero;
+        else
+        {
+            moveDirection = Vector3.zero;
+            audioSource.Stop();
+        }
+
     }
 
     private void OnDisable()

@@ -20,6 +20,7 @@ public class BreakWallScript : MonoBehaviour
         if (other.CompareTag("Skill2") && !isWallOpen)
         {
             anim.SetTrigger("Activate");
+            AudioManager.Instance.PlayWall();
             isWallOpen = true;
             col.enabled = false;
         }

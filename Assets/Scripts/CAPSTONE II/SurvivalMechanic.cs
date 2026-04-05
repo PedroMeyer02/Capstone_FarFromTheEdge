@@ -6,6 +6,12 @@ using System.Collections;
 
 public class SurvivalMechanic : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip ambience1;
+    public AudioClip ambience2;
+
+    [Header("PostProcessing")]
     //Post-processing settings
     [SerializeField] Volume renderVolume;
     Vignette vignette;
@@ -209,6 +215,10 @@ public class SurvivalMechanic : MonoBehaviour
 
     IEnumerator FadeInCurse()
     {
+        audioSource.clip = ambience2;
+        audioSource.Play();
+        audioSource.volume = 1f;
+
         //SoundManager.PlaySound(SoundType.Amiance2);
         filmGrain.intensity.value = 1;
         bloom.intensity.value = 1;
@@ -262,6 +272,11 @@ public class SurvivalMechanic : MonoBehaviour
 
     IEnumerator FadeOutCurse()
     {
+        audioSource.clip = ambience1;
+        audioSource.Play();
+        audioSource.volume = 0.5f;
+
+
         //SoundManager.PlaySound(SoundType.Ambiance1);
         filmGrain.intensity.value = 0;
         bloom.intensity.value = 0;
