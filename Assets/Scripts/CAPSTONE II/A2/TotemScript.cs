@@ -46,6 +46,8 @@ public class TotemScript : MonoBehaviour
         GameManager.Instance.IsPlayerPaused = true;
         GameManager.Instance.CameraToObject(newCamera);
 
+        AudioManager.Instance.PlayOrb();
+
         yield return new WaitForSeconds(1f);
         player.GetComponent<Animator>().SetTrigger("OrbAcquisition");
         

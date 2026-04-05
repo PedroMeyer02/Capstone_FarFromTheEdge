@@ -52,8 +52,12 @@ public class WallScript : MonoBehaviour
         GameManager.Instance.IsPlayerPaused = true;
         GameManager.Instance.CameraToObject(newCamera);
         GameManager.Instance.A1WallOpen = true;
+        
+        AudioManager.Instance.audioSource.loop = true;
+        AudioManager.Instance.PlayWall();
 
         yield return new WaitForSeconds(1f);
+
 
         wallAnim.SetTrigger("Activate");
         wallEffect.Play();
@@ -63,6 +67,8 @@ public class WallScript : MonoBehaviour
         wallEffect.Stop();
 
         yield return new WaitForSeconds(1f);
+
+        AudioManager.Instance.audioSource.loop = false;
 
         GameManager.Instance.CameraToCharacter();
         isWallOpening = false;

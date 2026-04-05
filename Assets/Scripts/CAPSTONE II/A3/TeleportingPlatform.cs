@@ -60,6 +60,7 @@ public class TeleportingPlatform : MonoBehaviour
     {
         GameManager.Instance.IsPlayerPaused = true;
         player.GetComponent<Animator>().SetTrigger("Teleport");
+        AudioManager.Instance.PlayTeleport();
         yield return new WaitForSeconds(1f);
         player.transform.position = newPosition.position;
         //player = this.gameObject;

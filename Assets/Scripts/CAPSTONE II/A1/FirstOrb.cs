@@ -37,6 +37,8 @@ public class FirstOrb : MonoBehaviour
         GameManager.Instance.CameraToObject(newCamera);
         orbAnimator.SetTrigger("Activate");
 
+        AudioManager.Instance.PlayOrb();
+
         yield return new WaitForSeconds(1f);
 
         player.GetComponent<Animator>().SetTrigger("OrbAcquisition");

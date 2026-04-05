@@ -30,16 +30,22 @@ public class BridgesActivation : MonoBehaviour
         if (other.CompareTag("Skill2") && bridgeStates == BridgeStates.Wanderer)
         {
             anim.SetBool("isDestroyed", false);
+            AudioManager.Instance.PlayWall();
+
         }
 
         if (other.CompareTag("Skill2") && bridgeStates == BridgeStates.Platforms)
         {
             anim.SetTrigger("Bridge");
+            AudioManager.Instance.PlayWall();
+
         }
 
         if (other.CompareTag("Skill2") && bridgeStates == BridgeStates.Portal)
         {
             anim.SetTrigger("Activate");
+            AudioManager.Instance.PlayWall();
+
         }
     }
 }
