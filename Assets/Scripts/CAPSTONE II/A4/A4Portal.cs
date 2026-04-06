@@ -36,7 +36,7 @@ public class A4Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Skill3") && !isActive)
+        if (other.CompareTag("Skill3") && !isActive && GameManager.Instance.A4PortalsActives >= 3)
         {
             anim.SetTrigger("Active");
             isActive = true;

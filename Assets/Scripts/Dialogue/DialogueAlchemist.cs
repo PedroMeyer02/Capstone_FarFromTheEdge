@@ -7,6 +7,8 @@ public class DialogueAlchemist : MonoBehaviour
     public GameObject dialogueBox2;
     public GameObject dialogueBox3;
 
+    public AudioSource audioSource;
+
     public Animator orbAnim;
     public Animator finalSceneAnim;
 
@@ -116,6 +118,7 @@ public class DialogueAlchemist : MonoBehaviour
             //player.trapID = 2;
             //player.playerIsTrapped = true;
             //player.GetComponent<Animator>().SetTrigger("Trapped2");
+            audioSource.Play();
             GameManager.Instance.IsPlayerPaused = true;
             Animator anim = GetComponentInParent<Animator>();
             anim.SetTrigger("Attack");
@@ -135,7 +138,7 @@ public class DialogueAlchemist : MonoBehaviour
             GameManager.Instance.A4Skill3Acquired = true;
             GameManager.Instance.UIManager.skill3Acquired.SetActive(true);
             finalSceneAnim.SetTrigger("Deactivate");
-
+            audioSource.Stop();
         }
     }
 

@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     //private IPlayerInteractable nearbyInteractable;
     public bool isInteracting = false;
 
+    public AudioSource audioSource;
+
     public PlayerInput input;
     public bool playerIsTrapped = false;
     public int trapID = 0;
@@ -214,6 +216,8 @@ public class Player : MonoBehaviour
     IEnumerator UseSkill1()
     {
         animator.SetTrigger("Skill1");
+        audioSource.Play();
+
         yield return new WaitForSeconds(2f);
         GameManager.Instance.IsPlayerPaused = false;
         isInteracting = false;
@@ -223,6 +227,8 @@ public class Player : MonoBehaviour
     IEnumerator UseSkill2()
     {
         animator.SetTrigger("Skill2");
+        audioSource.Play();
+
         yield return new WaitForSeconds(2f);
         GameManager.Instance.IsPlayerPaused = false;
         isInteracting = false;
@@ -232,6 +238,8 @@ public class Player : MonoBehaviour
     IEnumerator UseSkill3()
     {
         animator.SetTrigger("Skill3");
+        audioSource.Play();
+
         yield return new WaitForSeconds(2f);
         GameManager.Instance.IsPlayerPaused = false;
         isInteracting = false;
