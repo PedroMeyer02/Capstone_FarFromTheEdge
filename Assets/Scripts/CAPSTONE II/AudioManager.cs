@@ -10,8 +10,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip teleportClip;
     public AudioClip wallClip;
     public AudioClip orbClip;
-    public AudioClip audioClip;
-    public AudioClip audioClip2;
+    public AudioClip bridgeClip;
+    public AudioClip soulClip;
+
 
     private void Awake()
     {
@@ -34,6 +35,18 @@ public class AudioManager : MonoBehaviour
     public void PlayWall()
     {
         audioSource.clip = wallClip;
+        audioSource.Play();
+    }
+
+    public void PlayBridge()
+    {
+        audioSource.clip = bridgeClip;
+        audioSource.Play();
+    }
+
+    public void PlaySoul()
+    {
+        audioSource.clip = soulClip;
         audioSource.Play();
     }
 

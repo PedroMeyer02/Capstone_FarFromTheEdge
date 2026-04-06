@@ -274,7 +274,7 @@ public class SurvivalMechanic : MonoBehaviour
     {
         audioSource.clip = ambience1;
         audioSource.Play();
-        audioSource.volume = 0.5f;
+        audioSource.volume = 0.3f;
 
 
         //SoundManager.PlaySound(SoundType.Ambiance1);

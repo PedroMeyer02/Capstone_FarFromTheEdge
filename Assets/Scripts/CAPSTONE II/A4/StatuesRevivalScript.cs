@@ -19,8 +19,10 @@ public class StatuesRevivalScript : MonoBehaviour
         if (other.CompareTag("Skill3"))
         {
             anim.SetTrigger("Activate");
+            AudioManager.Instance.PlaySoul();
             col.enabled = false;
             Destroy(obj, 2f);
+
         }
     }
 }
