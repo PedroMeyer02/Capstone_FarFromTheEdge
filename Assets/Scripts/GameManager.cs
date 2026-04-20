@@ -79,14 +79,14 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         //A3 REMOVE
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            A3PortalActive = true;
-            A1Skill1Acquired = true;
-            A2Skill2Acquired = true;
-            //A4Skill3Acquired = true;
-            //wA2isFreeFromTrap = true;
-        }
+        //if(Input.GetKeyDown(KeyCode.T))
+        //{
+        //    A3PortalActive = true;
+        //    A1Skill1Acquired = true;
+        //    A2Skill2Acquired = true;
+        //    //A4Skill3Acquired = true;
+        //    //wA2isFreeFromTrap = true;
+        //}
 
         //if(Input.GetKeyDown(KeyCode.J))
         //{
