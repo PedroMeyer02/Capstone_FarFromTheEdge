@@ -12,11 +12,18 @@ public class CameraTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.Instance.CameraToObject(newCamera);
+        if (other.CompareTag("Player"))
+        {
+            GameManager.Instance.CameraToObject(newCamera);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        GameManager.Instance.CameraToCharacter();
+        if (other.CompareTag("Player"))
+        {
+            GameManager.Instance.CameraToCharacter();
+        }
+
     }
 }
