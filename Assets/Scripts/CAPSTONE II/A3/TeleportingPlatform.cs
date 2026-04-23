@@ -45,7 +45,7 @@ public class TeleportingPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GameManager.Instance.A3PortalActive)
+        if (GameManager.Instance.A3PortalActive && other.CompareTag("Player"))
         {
             //player = other.gameObject;
             StartCoroutine(A3PortalAction());
